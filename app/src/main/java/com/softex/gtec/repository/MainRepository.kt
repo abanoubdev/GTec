@@ -22,7 +22,7 @@ constructor(
 
     suspend fun getBlog(): Flow<DataState<List<Blog>>> = flow {
         emit(DataState.Loading)
-        delay(1000) // delay is just seeing the progress
+
         try {
             // retrieve from network
             val networkBlogList = blogRetrofit.getBlogs()

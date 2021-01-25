@@ -1,6 +1,5 @@
-package com.softex.gtec.ui
+package com.softex.gtec.ui.main
 
-import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.softex.gtec.model.Blog
@@ -11,13 +10,11 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
-
 @ExperimentalCoroutinesApi
 class MainViewModel
 @ViewModelInject
 constructor(
-    private val mainRepository: MainRepository,
-    @Assisted private val savedStateHandle: SavedStateHandle
+    private val mainRepository: MainRepository
 ) : ViewModel() {
 
     private val _dataState: MutableLiveData<DataState<List<Blog>>> = MutableLiveData()
@@ -40,10 +37,4 @@ constructor(
             }
         }
     }
-
-}
-
-sealed class MainStateEvent {
-    object GetBlogEvents : MainStateEvent()
-    object None : MainStateEvent()
 }

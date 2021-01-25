@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.softex.gtec.ui.MainFragment"
+        android:name="com.softex.gtec.ui.main.MainFragment"
         android:label="MainFragment" />
 
 </navigation>

@@ -9,12 +9,4 @@ import javax.inject.Singleton
 @InstallIn(ApplicationComponent::class)
 @Module
 object AppModule {
-
-    @Singleton
-    @Provides
-    fun provideSomeString(): String {
-        return "okan"
-    }
-
-
 }

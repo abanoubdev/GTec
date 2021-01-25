@@ -31,5 +31,4 @@ object RoomModule {
     fun provideBlogDAO(blogDatabase: BlogDatabase): BlogDao {
         return blogDatabase.blogDao()
     }
-
 }
