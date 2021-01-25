@@ -24,10 +24,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
-            def securityString = "wpKr&\$NDagoDhFNFI\$(O"
-            def serverIP = "104.243.33.149"
-            def databaseName = "SoftexDemo"
-            def encryptedEXAppID = "KiYqJCgjLWo5MDE2KCQzNCM0NSgqKQ=="
+            def securityString = "7[S6hpi>Sy!q}cUOIz#a"
+            def serverIP = "MC1"
+            def databaseName = "GTech_OnlineStore_MC"
+            def encryptedEXAppID = "KiYqJCgjLWo5MDEoJDM0IzQ1KCop"
 
             buildConfigField "String", "security_string", "\"$securityString\""
             buildConfigField "String", "server_ip", "\"$serverIP\""
