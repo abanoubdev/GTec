@@ -11,4 +11,23 @@
         android:label="MainFragment"
         tools:layout="@layout/fragment_main" />
 
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.softex.gtec.ui.splash.SplashFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_splashFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.softex.gtec.ui.login.LoginFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main" />
+
 </navigation>
