@@ -1,10 +1,9 @@
 package com.softex.gtec.di
 
 import com.softex.gtec.repository.MainRepository
-import com.softex.gtec.retrofit.BlogRetrofit
-import com.softex.gtec.retrofit.NetworkMapper
-import com.softex.gtec.room.BlogDao
-import com.softex.gtec.room.CacheMapper
+import com.softex.gtec.repository.RepositorySource
+import com.softex.gtec.retrofit.RetrofitService
+import com.softex.gtec.room.UserDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,16 +17,12 @@ object RepositoryModule {
     @Singleton
     @Provides
     fun provideMainRepository(
-        blogDao: BlogDao,
-        retrofit: BlogRetrofit,
-        cacheMapper: CacheMapper,
-        networkMapper: NetworkMapper
-    ): MainRepository {
+        userDao: UserDao,
+        retrofit: RetrofitService,
+    ): RepositorySource {
         return MainRepository(
-            blogDao = blogDao,
-            blogRetrofit = retrofit,
-            cacheMapper = cacheMapper,
-            networkMapper = networkMapper
+            userDao = userDao,
+            retrofitService = retrofit
         )
     }
 }

@@ -2,8 +2,8 @@ package com.softex.gtec.di
 
 import android.content.Context
 import androidx.room.Room
-import com.softex.gtec.room.BlogDao
-import com.softex.gtec.room.BlogDatabase
+import com.softex.gtec.room.UserDao
+import com.softex.gtec.room.GtecDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,18 +17,18 @@ object RoomModule {
 
     @Singleton
     @Provides
-    fun provideBlogDb(@ApplicationContext context: Context): BlogDatabase {
+    fun provideGTecDb(@ApplicationContext context: Context): GtecDatabase {
         return Room.databaseBuilder(
             context,
-            BlogDatabase::class.java,
-            BlogDatabase.DATABASE_NAME
+            GtecDatabase::class.java,
+            GtecDatabase.DATABASE_NAME
         ).fallbackToDestructiveMigration()
             .build()
     }
 
     @Singleton
     @Provides
-    fun provideBlogDAO(blogDatabase: BlogDatabase): BlogDao {
-        return blogDatabase.blogDao()
+    fun provideUserDAO(gtecDatabase: GtecDatabase): UserDao {
+        return gtecDatabase.userDao()
     }
 }

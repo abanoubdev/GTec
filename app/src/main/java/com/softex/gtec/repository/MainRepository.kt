@@ -1,12 +1,10 @@
 package com.softex.gtec.repository
 
-import com.softex.gtec.model.Blog
-import com.softex.gtec.retrofit.BlogRetrofit
-import com.softex.gtec.retrofit.NetworkMapper
-import com.softex.gtec.room.BlogDao
-import com.softex.gtec.room.CacheMapper
+import com.softex.gtec.BuildConfig
+import com.softex.gtec.model.User
+import com.softex.gtec.retrofit.RetrofitService
+import com.softex.gtec.room.UserDao
 import com.softex.gtec.util.DataState
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
@@ -14,32 +12,26 @@ import javax.inject.Inject
 class MainRepository
 @Inject
 constructor(
-    private val blogDao: BlogDao,
-    private val blogRetrofit: BlogRetrofit,
-    private val cacheMapper: CacheMapper,
-    private val networkMapper: NetworkMapper
-) {
+    private val userDao: UserDao,
+    private val retrofitService: RetrofitService
+) : RepositorySource {
 
-    suspend fun getBlog(): Flow<DataState<List<Blog>>> = flow {
+    override suspend fun login(username: String, password: String):
+            Flow<DataState<User>> = flow {
         emit(DataState.Loading)
-
         try {
-            // retrieve from network
-            val networkBlogList = blogRetrofit.getBlogs()
-            val blogList = networkMapper.mapFromEntityList(networkBlogList)
-
-            // send to cache
-            for (blog in blogList) {
-                blogDao.insert(cacheMapper.mapToEntity(blog))
-            }
-
-            // read from the cache
-            val cachedBlogList = blogDao.getBlogList()
-            emit(DataState.Success(cacheMapper.mapFromEntityList(cachedBlogList)))
-
+            val user =
+                retrofitService.login(
+                    BuildConfig.security_string,
+                    BuildConfig.server_ip,
+                    BuildConfig.database_name,
+                    BuildConfig.encrypted_ex_app_id,
+                    username,
+                    password
+                )
+            emit(DataState.Success(user))
         } catch (e: Exception) {
             emit(DataState.Error(e))
         }
     }
-
 }

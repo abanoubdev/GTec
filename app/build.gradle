@@ -29,11 +29,13 @@ android {
             def serverIP = "MC1"
             def databaseName = "GTech_OnlineStore_MC"
             def encryptedEXAppID = "KiYqJCgjLWo5MDEoJDM0IzQ1KCop"
+            def BASE_URL = "http://softex-mc-exapps-ws.azurewebsites.net/"
 
             buildConfigField "String", "security_string", "\"$securityString\""
             buildConfigField "String", "server_ip", "\"$serverIP\""
             buildConfigField "String", "database_name", "\"$databaseName\""
             buildConfigField "String", "encrypted_ex_app_id", "\"$encryptedEXAppID\""
+            buildConfigField "String", "base_url", "\"$BASE_URL\""
         }
 
         debug {
@@ -43,11 +45,13 @@ android {
             def serverIP = "104.243.33.149"
             def databaseName = "SoftexDemo"
             def encryptedEXAppID = "KiYqJCgjLWo5MDE2KCQzNCM0NSgqKQ=="
+            def BASE_URL = "http://softex-mc-exapps-ws.azurewebsites.net/"
 
             buildConfigField "String", "security_string", "\"$securityString\""
             buildConfigField "String", "server_ip", "\"$serverIP\""
             buildConfigField "String", "database_name", "\"$databaseName\""
             buildConfigField "String", "encrypted_ex_app_id", "\"$encryptedEXAppID\""
+            buildConfigField "String", "base_url", "\"$BASE_URL\""
         }
     }
 
@@ -125,4 +129,6 @@ dependencies {
     androidTestImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    testImplementation "org.powermock:powermock-module-junit4:1.7.4"
+    testImplementation "org.powermock:powermock-api-mockito2:1.7.4"
 }

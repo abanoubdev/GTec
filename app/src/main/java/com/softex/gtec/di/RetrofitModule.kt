@@ -2,7 +2,7 @@ package com.softex.gtec.di
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.softex.gtec.retrofit.BlogRetrofit
+import com.softex.gtec.retrofit.RetrofitService
 
 import dagger.Module
 import dagger.Provides
@@ -34,8 +34,8 @@ object RetrofitModule {
 
     @Singleton
     @Provides
-    fun provideBlogService(retrofit: Retrofit.Builder): BlogRetrofit {
+    fun provideService(retrofit: Retrofit.Builder): RetrofitService {
         return retrofit.build()
-            .create(BlogRetrofit::class.java)
+            .create(RetrofitService::class.java)
     }
 }
