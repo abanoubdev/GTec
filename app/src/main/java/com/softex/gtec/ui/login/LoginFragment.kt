@@ -14,25 +14,15 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @ExperimentalCoroutinesApi
 @AndroidEntryPoint
-class LoginFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = LoginFragment()
-    }
+class LoginFragment : Fragment(R.layout.login_fragment) {
 
     private val viewModel: LoginViewModel by viewModels()
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.login_fragment, container, false)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         subscribeObservers()
-        viewModel.setStateEvent(loginStateEvent = LoginStateEvent.Login)
+
+//        viewModel.setStateEvent(loginStateEvent = LoginStateEvent.Login)
     }
 
     private fun subscribeObservers() {

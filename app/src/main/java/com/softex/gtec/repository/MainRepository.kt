@@ -34,4 +34,20 @@ constructor(
             emit(DataState.Error(e))
         }
     }
+
+    override suspend fun getCachedUser(): Flow<DataState<User?>> = flow {
+        emit(DataState.Loading)
+
+        try {
+            val cachedList =
+                userDao.getUser()
+            if (cachedList.isNotEmpty()) {
+                emit(DataState.Success(cachedList[0]))
+            } else {
+                emit(DataState.Success(null))
+            }
+        } catch (e: Exception) {
+            emit(DataState.Error(e))
+        }
+    }
 }

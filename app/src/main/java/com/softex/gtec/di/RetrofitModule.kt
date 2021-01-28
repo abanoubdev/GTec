@@ -2,6 +2,7 @@ package com.softex.gtec.di
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.softex.gtec.BuildConfig
 import com.softex.gtec.retrofit.RetrofitService
 
 import dagger.Module
@@ -28,7 +29,7 @@ object RetrofitModule {
     @Provides
     fun provideRetrofit(gson: Gson): Retrofit.Builder {
         return Retrofit.Builder()
-            .baseUrl("https://open-api.xyz/placeholder/")
+            .baseUrl(BuildConfig.base_url)
             .addConverterFactory(GsonConverterFactory.create(gson))
     }
 

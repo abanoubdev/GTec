@@ -14,6 +14,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import java.lang.Exception
 
 @ExperimentalCoroutinesApi
 class LoginViewModel
@@ -38,9 +39,6 @@ constructor(
                         .onEach { dataState ->
                             _dataState.value = dataState
                         }.launchIn(viewModelScope)
-                }
-
-                is LoginStateEvent.None -> {
                 }
             }
         }
