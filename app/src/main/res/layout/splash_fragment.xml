@@ -7,7 +7,6 @@
     android:background="@mipmap/splash_bg"
     tools:context=".ui.splash.SplashFragment">
 
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"

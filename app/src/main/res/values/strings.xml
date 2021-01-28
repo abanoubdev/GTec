@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">G-TEC</string>
+    <string name="lets_sign_you_in">Let’s Sign You In</string>
+    <string name="username_or_email">Username or E-Mail</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sıgn In</string>
+    <string name="forget_with_question_mark">Forget?</string>
+    <string name="dont_have_account">Don’t have an account?</string>
+    <string name="sign_up">Sign Up</string>
 </resources>
