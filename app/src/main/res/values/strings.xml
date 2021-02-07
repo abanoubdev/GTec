@@ -9,4 +9,7 @@
     <string name="sign_up">Sign Up</string>
     <string name="invalid_username_or_email">Invalid Username or Email</string>
     <string name="invalid_password">Invalid Password</string>
+    <string name="please">Please</string>
+    <string name="wait">Wait</string>
+    <string name="loading">loading</string>
 </resources>

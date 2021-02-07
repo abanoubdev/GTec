@@ -8,4 +8,10 @@
         <item name="android:windowBackground">@color/white_two</item>
         <item name="android:typeface">monospace</item>
     </style>
+
+    <style name="DialogTheme" parent="Theme.GTEC">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowIsFloating">false</item>
+    </style>
 </resources>

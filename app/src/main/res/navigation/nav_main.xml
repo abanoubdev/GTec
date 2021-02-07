@@ -9,7 +9,7 @@
         android:id="@+id/splashFragment"
         android:name="com.softex.gtec.ui.splash.SplashFragment"
         android:label="MainFragment"
-        tools:layout="@layout/splash_fragment">
+        tools:layout="@layout/fragment_splash">
         <action
             android:id="@+id/action_splashFragment_to_loginFragment"
             app:destination="@id/loginFragment"
@@ -34,7 +34,7 @@
         android:id="@+id/loginFragment"
         android:name="com.softex.gtec.ui.login.LoginFragment"
         android:label="MainFragment"
-        tools:layout="@layout/login_fragment">
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
             app:destination="@id/registerFragment"
@@ -49,12 +49,19 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+        <action
+            android:id="@+id/action_loginFragment_to_forgetPasswordFragment"
+            app:destination="@id/forgetPasswordFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.softex.gtec.ui.register.RegisterFragment"
         android:label="register_fragment"
-        tools:layout="@layout/register_fragment">
+        tools:layout="@layout/fragment_register">
         <action
             android:id="@+id/action_registerFragment_to_homepageFragment"
             app:destination="@id/homepageFragment"
@@ -69,4 +76,9 @@
         android:name="com.softex.gtec.ui.homepage.HomepageFragment"
         android:label="HomepageFragment"
         tools:layout="@layout/fragment_homepage" />
+    <fragment
+        android:id="@+id/forgetPasswordFragment"
+        android:name="com.softex.gtec.ui.forgetPassword.ForgetPasswordFragment"
+        android:label="fragment_forget_password"
+        tools:layout="@layout/fragment_forget_password" />
 </navigation>

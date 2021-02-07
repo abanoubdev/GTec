@@ -9,7 +9,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @ExperimentalCoroutinesApi
 @AndroidEntryPoint
-class ForgetPasswordFragment : BaseFragment(R.layout.forget_password_fragment) {
+class ForgetPasswordFragment : BaseFragment(R.layout.fragment_forget_password) {
 
     private val viewModel: HomepageViewModel by viewModels()
     

@@ -8,7 +8,7 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.softex.gtec.R
-import com.softex.gtec.databinding.LoginFragmentBinding
+import com.softex.gtec.databinding.FragmentLoginBinding
 import com.softex.gtec.extensions.snackbarShort
 import com.softex.gtec.model.User
 import com.softex.gtec.ui.BaseFragment
@@ -19,11 +19,11 @@ import java.lang.Exception
 
 @ExperimentalCoroutinesApi
 @AndroidEntryPoint
-class LoginFragment : BaseFragment(R.layout.login_fragment) {
+class LoginFragment : BaseFragment(R.layout.fragment_login) {
 
     private val viewModel: LoginViewModel by viewModels()
 
-    private var _binding: LoginFragmentBinding? = null
+    private var _binding: FragmentLoginBinding? = null
 
     private val binding get() = _binding!!
 
@@ -32,7 +32,7 @@ class LoginFragment : BaseFragment(R.layout.login_fragment) {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = LoginFragmentBinding.inflate(inflater, container, false)
+        _binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -42,6 +42,10 @@ class LoginFragment : BaseFragment(R.layout.login_fragment) {
         }
 
         _binding?.tvForgetPassword?.setOnClickListener {
+            Navigation.findNavController(
+                requireActivity(),
+                R.id.nav_host_fragment
+            ).navigate(R.id.action_loginFragment_to_forgetPasswordFragment)
         }
 
         _binding?.signUp1?.setOnClickListener {

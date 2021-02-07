@@ -6,18 +6,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.softex.gtec.R
-import com.softex.gtec.databinding.RegisterFragmentBinding
+import com.softex.gtec.databinding.FragmentRegisterBinding
 import com.softex.gtec.ui.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @ExperimentalCoroutinesApi
 @AndroidEntryPoint
-class RegisterFragment : BaseFragment(R.layout.register_fragment) {
+class RegisterFragment : BaseFragment(R.layout.fragment_register) {
 
     private val viewModel: RegisterViewModel by viewModels()
 
-    private var _binding: RegisterFragmentBinding? = null
+    private var _binding: FragmentRegisterBinding? = null
 
     private val binding get() = _binding!!
 
@@ -25,7 +25,7 @@ class RegisterFragment : BaseFragment(R.layout.register_fragment) {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = RegisterFragmentBinding.inflate(inflater, container, false)
+        _binding = FragmentRegisterBinding.inflate(inflater, container, false)
         return binding.root
     }
 

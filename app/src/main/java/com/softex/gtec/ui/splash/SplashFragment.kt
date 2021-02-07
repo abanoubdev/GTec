@@ -15,7 +15,7 @@ import java.lang.Exception
 
 @AndroidEntryPoint
 @ExperimentalCoroutinesApi
-class SplashFragment : BaseFragment(R.layout.splash_fragment) {
+class SplashFragment : BaseFragment(R.layout.fragment_splash) {
 
     private val viewModel: SplashViewModel by viewModels()
 
@@ -28,7 +28,6 @@ class SplashFragment : BaseFragment(R.layout.splash_fragment) {
             when (dataState) {
                 is DataState.Success<User?> -> {
                     Handler(Looper.getMainLooper()).postDelayed({
-                        displayLoading(false)
                         if (dataState.data != null) {
                             findNavController(
                                 requireActivity(),
@@ -44,12 +43,7 @@ class SplashFragment : BaseFragment(R.layout.splash_fragment) {
                 }
 
                 is DataState.Error -> {
-                    displayLoading(false)
                     displayError(dataState.exception)
-                }
-
-                is DataState.Loading -> {
-                    displayLoading(true)
                 }
             }
         })
@@ -57,9 +51,5 @@ class SplashFragment : BaseFragment(R.layout.splash_fragment) {
 
     private fun displayError(exception: Exception) {
         snackbarShort(exception)
-    }
-
-    private fun displayLoading(isLoading: Boolean) {
-        displayLoadingDialog(isLoading)
     }
 }
