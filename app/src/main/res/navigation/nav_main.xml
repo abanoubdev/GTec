@@ -6,37 +6,35 @@
     app:startDestination="@id/splashFragment">
 
     <fragment
-        android:id="@+id/homepageFragment"
-        android:name="com.softex.gtec.ui.homepage.HomepageFragment"
-        android:label="HomepageFragment"
-        tools:layout="@layout/fragment_homepage" />
-
-    <fragment
         android:id="@+id/splashFragment"
         android:name="com.softex.gtec.ui.splash.SplashFragment"
         android:label="MainFragment"
-        tools:layout="@layout/fragment_homepage" >
+        tools:layout="@layout/splash_fragment">
         <action
             android:id="@+id/action_splashFragment_to_loginFragment"
             app:destination="@id/loginFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
+            app:launchSingleTop="true"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_splashFragment_to_homepageFragment"
             app:destination="@id/homepageFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
+            app:launchSingleTop="true"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.softex.gtec.ui.login.LoginFragment"
         android:label="MainFragment"
-        tools:layout="@layout/fragment_homepage" >
+        tools:layout="@layout/login_fragment">
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
             app:destination="@id/registerFragment"
@@ -56,7 +54,7 @@
         android:id="@+id/registerFragment"
         android:name="com.softex.gtec.ui.register.RegisterFragment"
         android:label="register_fragment"
-        tools:layout="@layout/register_fragment" >
+        tools:layout="@layout/register_fragment">
         <action
             android:id="@+id/action_registerFragment_to_homepageFragment"
             app:destination="@id/homepageFragment"
@@ -66,4 +64,9 @@
             app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
+    <fragment
+        android:id="@+id/homepageFragment"
+        android:name="com.softex.gtec.ui.homepage.HomepageFragment"
+        android:label="HomepageFragment"
+        tools:layout="@layout/fragment_homepage" />
 </navigation>

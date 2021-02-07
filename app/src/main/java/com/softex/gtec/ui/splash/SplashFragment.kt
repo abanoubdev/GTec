@@ -1,6 +1,7 @@
 package com.softex.gtec.ui.splash
 
 import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation.findNavController
 import com.softex.gtec.R
@@ -19,13 +20,14 @@ class SplashFragment : BaseFragment(R.layout.splash_fragment) {
     private val viewModel: SplashViewModel by viewModels()
 
     override fun initViews() {
+        viewModel.setStateEvent(SplashStateEvent.GetUser)
     }
 
     override fun subscribeObservers() {
         viewModel.dataState.observe(viewLifecycleOwner, { dataState ->
             when (dataState) {
                 is DataState.Success<User?> -> {
-                    Handler().postDelayed({
+                    Handler(Looper.getMainLooper()).postDelayed({
                         displayLoading(false)
                         if (dataState.data != null) {
                             findNavController(
@@ -58,6 +60,6 @@ class SplashFragment : BaseFragment(R.layout.splash_fragment) {
     }
 
     private fun displayLoading(isLoading: Boolean) {
-        displayLoading(isLoading)
+        displayLoadingDialog(isLoading)
     }
 }

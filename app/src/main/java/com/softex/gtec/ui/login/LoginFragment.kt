@@ -1,10 +1,10 @@
 package com.softex.gtec.ui.login
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.softex.gtec.R
@@ -15,6 +15,7 @@ import com.softex.gtec.ui.BaseFragment
 import com.softex.gtec.util.DataState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import java.lang.Exception
 
 @ExperimentalCoroutinesApi
 @AndroidEntryPoint
@@ -41,7 +42,6 @@ class LoginFragment : BaseFragment(R.layout.login_fragment) {
         }
 
         _binding?.tvForgetPassword?.setOnClickListener {
-
         }
 
         _binding?.signUp1?.setOnClickListener {
@@ -56,6 +56,14 @@ class LoginFragment : BaseFragment(R.layout.login_fragment) {
                 requireActivity(),
                 R.id.nav_host_fragment
             ).navigate(R.id.action_loginFragment_to_registerFragment)
+        }
+
+        _binding?.etUsernameOrEmail?.addTextChangedListener {
+            viewModel.username = it.toString()
+        }
+
+        _binding?.etPassword?.addTextChangedListener {
+            viewModel.password = it.toString()
         }
     }
 
@@ -73,6 +81,23 @@ class LoginFragment : BaseFragment(R.layout.login_fragment) {
 
                 is DataState.Loading -> {
                     displayLoading(true)
+                }
+            }
+        })
+
+        viewModel.errorState.observe(viewLifecycleOwner, {
+            when (it) {
+                is LoginStateEvent.InvalidUsername -> {
+                    _binding?.etUsernameOrEmail?.error =
+                        context?.getString(R.string.invalid_username_or_email)
+                }
+
+                is LoginStateEvent.InvalidPassword -> {
+                    _binding?.etPassword?.error =
+                        context?.getString(R.string.invalid_password)
+                }
+                else -> {
+                    throw Exception("State not found")
                 }
             }
         })

@@ -1,5 +1,6 @@
 package com.softex.gtec.ui.splash
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -17,7 +18,7 @@ import javax.inject.Inject
 @ExperimentalCoroutinesApi
 @HiltViewModel
 class SplashViewModel
-@Inject
+@ViewModelInject
 constructor(
     private val mainRepository: RepositorySource
 ) : ViewModel() {

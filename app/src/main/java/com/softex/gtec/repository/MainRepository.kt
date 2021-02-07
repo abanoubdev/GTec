@@ -1,6 +1,7 @@
 package com.softex.gtec.repository
 
 import com.softex.gtec.BuildConfig
+import com.softex.gtec.extensions.encrypt
 import com.softex.gtec.model.User
 import com.softex.gtec.retrofit.RetrofitService
 import com.softex.gtec.room.UserDao
@@ -27,7 +28,7 @@ constructor(
                     BuildConfig.database_name,
                     BuildConfig.encrypted_ex_app_id,
                     username,
-                    password
+                    password.encrypt()
                 )
             emit(DataState.Success(user))
         } catch (e: Exception) {

@@ -1,8 +1,10 @@
 package com.softex.gtec.extensions
 
+import android.text.TextUtils
 import android.util.Log
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
+import com.softex.gtec.util.SaltEncryption
 import java.lang.Exception
 
 fun log(tag: String, message: String) {
@@ -31,4 +33,12 @@ fun Fragment.snackbarLong(message: String?) {
             Snackbar.make(this.requireView(), message, Snackbar.LENGTH_LONG).show()
         }
     }
+}
+
+fun String.isEmpty(): Boolean {
+    return TextUtils.isEmpty(this)
+}
+
+fun String.encrypt(): String {
+    return SaltEncryption.encrypt(this)
 }

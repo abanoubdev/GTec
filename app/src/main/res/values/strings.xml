@@ -7,4 +7,6 @@
     <string name="forget_with_question_mark">Forget?</string>
     <string name="dont_have_account">Don’t have an account?</string>
     <string name="sign_up">Sign Up</string>
+    <string name="invalid_username_or_email">Invalid Username or Email</string>
+    <string name="invalid_password">Invalid Password</string>
 </resources>
