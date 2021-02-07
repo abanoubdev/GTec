@@ -2,9 +2,8 @@ package com.softex.gtec.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.PrimaryKey
 
-@Entity(tableName = "user",primaryKeys = ["id"])
+@Entity(tableName = "user", primaryKeys = ["id"])
 data class User(
     @ColumnInfo(name = "id")
     val CustomerID: Int,
