@@ -3,8 +3,6 @@ package com.softex.gtec.ui
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 abstract class BaseFragment(layoutId: Int) : Fragment(layoutId) {
 
@@ -19,6 +17,5 @@ abstract class BaseFragment(layoutId: Int) : Fragment(layoutId) {
     }
 
     protected fun displayLoadingDialog(isLoading: Boolean) {
-
     }
 }
