@@ -19,8 +19,6 @@ class HomepageFragment : BaseFragment(R.layout.fragment_homepage) {
 
     private val binding get() = _binding!!
 
-    private val TAG: String = "HomepageFragment"
-
     private val viewModel: HomepageViewModel by viewModels()
 
     override fun onCreateView(

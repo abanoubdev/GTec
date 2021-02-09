@@ -14,5 +14,5 @@ interface RetrofitService {
         @Query("InputX.encryptedEXAppID") encryptedEXAppID: String,
         @Query("InputX.encryptedPhone") encryptedPhone: String,
         @Query("InputX.encryptedPassword") encryptedPassword: String
-    ): User
+    ): User?
 }

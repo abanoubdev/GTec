@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface RepositorySource {
 
-    suspend fun login(username: String, password: String): Flow<DataState<User>>
+    suspend fun login(username: String, password: String): Flow<DataState<User?>>
 
     suspend fun getCachedUser(): Flow<DataState<User?>>
 

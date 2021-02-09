@@ -25,14 +25,14 @@ constructor(
     private val mainRepository: MainRepository
 ) : ViewModel() {
 
-    private val _dataState: MutableLiveData<DataState<User>> = MutableLiveData()
+    private val _dataState: MutableLiveData<DataState<User?>> = MutableLiveData()
 
     private val _errorState: MutableLiveData<LoginStateEvent> = MutableLiveData()
 
     var username: String = ""
     var password: String = ""
 
-    val dataState: LiveData<DataState<User>>
+    val dataState: LiveData<DataState<User?>>
         get() = _dataState
 
     val errorState: MutableLiveData<LoginStateEvent>

@@ -18,7 +18,7 @@ constructor(
 ) : RepositorySource {
 
     override suspend fun login(username: String, password: String):
-            Flow<DataState<User>> = flow {
+            Flow<DataState<User?>> = flow {
         emit(DataState.Loading)
         try {
             val user =
@@ -30,7 +30,13 @@ constructor(
                     username,
                     password.encrypt()
                 )
-            emit(DataState.Success(user))
+
+            if (user?.CustomerID != null) {
+                userDao.insert(user)
+                emit(DataState.Success(user))
+            } else {
+                emit(DataState.Error(Exception()))
+            }
         } catch (e: Exception) {
             emit(DataState.Error(e))
         }
@@ -38,7 +44,6 @@ constructor(
 
     override suspend fun getCachedUser(): Flow<DataState<User?>> = flow {
         emit(DataState.Loading)
-
         try {
             val cachedList =
                 userDao.getUser()

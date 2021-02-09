@@ -19,18 +19,10 @@ object RetrofitModule {
 
     @Singleton
     @Provides
-    fun provideGsonBuilder(): Gson {
-        return GsonBuilder()
-            .excludeFieldsWithoutExposeAnnotation()
-            .create()
-    }
-
-    @Singleton
-    @Provides
-    fun provideRetrofit(gson: Gson): Retrofit.Builder {
+    fun provideRetrofit(): Retrofit.Builder {
         return Retrofit.Builder()
             .baseUrl(BuildConfig.base_url)
-            .addConverterFactory(GsonConverterFactory.create(gson))
+            .addConverterFactory(GsonConverterFactory.create())
     }
 
     @Singleton

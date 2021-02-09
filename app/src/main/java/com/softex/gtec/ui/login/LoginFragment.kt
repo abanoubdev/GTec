@@ -73,18 +73,24 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
 
     override fun subscribeObservers() {
         viewModel.dataState.observe(viewLifecycleOwner, { dataState ->
-            when (dataState) {
-                is DataState.Success<User> -> {
-                    displayLoading(false)
-                }
+            if (dataState != null) {
+                when (dataState) {
+                    is DataState.Success<User?> -> {
+                        displayLoading(false)
+                        Navigation.findNavController(
+                            requireActivity(),
+                            R.id.nav_host_fragment
+                        ).navigate(R.id.action_loginFragment_to_homepageFragment)
+                    }
 
-                is DataState.Error -> {
-                    displayLoading(false)
-                    displayError(dataState.exception.message)
-                }
+                    is DataState.Error -> {
+                        displayLoading(false)
+                        displayError(dataState.exception.message)
+                    }
 
-                is DataState.Loading -> {
-                    displayLoading(true)
+                    is DataState.Loading -> {
+                        displayLoading(true)
+                    }
                 }
             }
         })

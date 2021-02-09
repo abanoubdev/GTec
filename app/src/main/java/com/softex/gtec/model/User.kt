@@ -6,13 +6,13 @@ import androidx.room.Entity
 @Entity(tableName = "user", primaryKeys = ["id"])
 data class User(
     @ColumnInfo(name = "id")
-    val CustomerID: Int,
+    val CustomerID: Int?,
     @ColumnInfo(name = "name")
-    val CustomerName: String,
+    val CustomerName: String?,
     @ColumnInfo(name = "status")
-    val CustomerStatus: Int,
+    val CustomerStatus: Int?,
     @ColumnInfo(name = "type")
-    val CustomerType: String
+    val CustomerType: String?
 ) {
     override fun toString(): String {
         return "{CustomerID=$CustomerID, CustomerName='$CustomerName', CustomerStatus=$CustomerStatus, CustomerType='$CustomerType'}"
