@@ -9,7 +9,6 @@ import com.softex.gtec.extensions.isEmpty
 import com.softex.gtec.model.User
 import com.softex.gtec.repository.MainRepository
 import com.softex.gtec.util.DataState
-import com.softex.gtec.util.SaltEncryption
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.launchIn
