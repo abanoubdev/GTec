@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.softex.gtec.ui.loading.LoadingDialog
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 abstract class BaseFragment(layoutId: Int) : Fragment(layoutId) {
 
