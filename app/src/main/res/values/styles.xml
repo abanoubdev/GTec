@@ -1,8 +1,8 @@
 <resources>
 
     <style name="Theme.GTEC" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/pale_red</item>
-        <item name="colorPrimaryDark">@color/white_two</item>
+        <item name="colorPrimary">@color/black_six</item>
+        <item name="colorPrimaryDark">@color/black_six</item>
         <item name="colorAccent">@color/pale_red</item>
         <item name="android:textColorHint">@color/greyish</item>
         <item name="android:windowBackground">@color/white_two</item>

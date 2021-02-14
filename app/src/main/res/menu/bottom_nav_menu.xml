@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:icon="@mipmap/icon_user"
+        android:title="@string/home" />
+
+    <item
+        android:id="@+id/my_account"
+        android:icon="@mipmap/icon_user"
+        android:title="@string/my_account" />
+
+    <item
+        android:id="@+id/placeholder"
+        android:title="" />
+
+    <item
+        android:id="@+id/offers"
+        android:icon="@mipmap/offers"
+        android:title="@string/offers" />
+
+    <item
+        android:id="@+id/order"
+        android:icon="@mipmap/order"
+        android:title="@string/order" />
+</menu>
