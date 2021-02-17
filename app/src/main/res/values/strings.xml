@@ -33,4 +33,6 @@
     <string name="address_sample">El Tagamoa&apos;</string>
     <string name="payment">Payment</string>
     <string name="manage_address">Manage Address</string>
+    <string name="your_name">Your Name</string>
+    <string name="already_have_account">Already have an account?</string>
 </resources>
