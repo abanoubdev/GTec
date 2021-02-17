@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_shop">
+
+    <fragment
+        android:id="@+id/navigation_shop"
+        android:name="com.softex.gtec.ui.shop.ShopFragment"
+        android:label="@string/title_shop"
+        tools:layout="@layout/shop_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_my_account"
+        android:name="com.softex.gtec.ui.myAccount.MyAccountFragment"
+        android:label="@string/title_my_account"
+        tools:layout="@layout/my_account_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_offers"
+        android:name="com.softex.gtec.ui.offers.OffersFragment"
+        android:label="@string/title_offers"
+        tools:layout="@layout/offers_fragment" />
+
+    <fragment
+        android:id="@+id/navigation_order"
+        android:name="com.softex.gtec.ui.order.OrderFragment"
+        android:label="@string/title_offers"
+        tools:layout="@layout/order_fragment" />
+</navigation>

@@ -7,7 +7,7 @@ import retrofit2.http.Query
 interface RetrofitService {
 
     @GET("api/Account/MobileLogin")
-    suspend fun login(
+    suspend fun mobileLogin(
         @Query("InputX.securityString") securityString: String,
         @Query("InputX.serverIP") serverIP: String,
         @Query("InputX.databaseName") databaseName: String,

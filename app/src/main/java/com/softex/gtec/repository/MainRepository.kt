@@ -22,7 +22,7 @@ constructor(
         emit(DataState.Loading)
         try {
             val user =
-                retrofitService.login(
+                retrofitService.mobileLogin(
                     BuildConfig.security_string,
                     BuildConfig.server_ip,
                     BuildConfig.database_name,

@@ -1,9 +1,11 @@
 package com.softex.gtec.extensions
 
+import android.content.Intent
 import android.text.TextUtils
 import android.util.Log
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
+import com.softex.gtec.ui.homepage.HomepageActivity
 import com.softex.gtec.util.SaltEncryption
 import java.lang.Exception
 
@@ -25,6 +27,12 @@ fun Fragment.snackbarShort(exception: Exception?) {
             Snackbar.make(this.requireView(), it.message!!, Snackbar.LENGTH_SHORT).show()
         }
     }
+}
+
+fun Fragment.startHomepage() {
+    val intent = Intent(requireActivity(), HomepageActivity::class.java)
+    startActivity(intent)
+    requireActivity().finish()
 }
 
 fun Fragment.snackbarLong(message: String?) {

@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/home"
+        android:id="@+id/shop"
         android:icon="@mipmap/gocery"
-        android:title="@string/home" />
+        android:title="@string/title_shop" />
 
     <item
         android:id="@+id/my_account"

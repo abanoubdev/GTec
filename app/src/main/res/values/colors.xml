@@ -29,4 +29,7 @@
     <color name="warm_grey_two">#949494</color>
     <color name="black_16">#29000000</color>
     <color name="black_six">#303030</color>
+    <color name="very_light_pink">#f1f1f1</color>
+    <color name="brown_grey">#aeaeae</color>
+    <color name="pale_grey">#feffff</color>
 </resources>

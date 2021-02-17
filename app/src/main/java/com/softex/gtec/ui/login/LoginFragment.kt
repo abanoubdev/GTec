@@ -10,6 +10,7 @@ import androidx.navigation.Navigation
 import com.softex.gtec.R
 import com.softex.gtec.databinding.FragmentLoginBinding
 import com.softex.gtec.extensions.snackbarShort
+import com.softex.gtec.extensions.startHomepage
 import com.softex.gtec.model.User
 import com.softex.gtec.ui.BaseFragment
 import com.softex.gtec.util.DataState
@@ -77,10 +78,7 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
                 when (dataState) {
                     is DataState.Success<User?> -> {
                         displayLoading(false)
-                        Navigation.findNavController(
-                            requireActivity(),
-                            R.id.nav_host_fragment
-                        ).navigate(R.id.action_loginFragment_to_homepageFragment)
+                        startHomepage()
                     }
 
                     is DataState.Error -> {

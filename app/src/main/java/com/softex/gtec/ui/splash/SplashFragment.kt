@@ -6,6 +6,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation.findNavController
 import com.softex.gtec.R
 import com.softex.gtec.extensions.snackbarShort
+import com.softex.gtec.extensions.startHomepage
 import com.softex.gtec.model.User
 import com.softex.gtec.ui.BaseFragment
 import com.softex.gtec.util.DataState
@@ -29,10 +30,7 @@ class SplashFragment : BaseFragment(R.layout.fragment_splash) {
                 is DataState.Success<User?> -> {
                     Handler(Looper.getMainLooper()).postDelayed({
                         if (dataState.data != null) {
-                            findNavController(
-                                requireActivity(),
-                                R.id.nav_host_fragment
-                            ).navigate(R.id.action_splashFragment_to_homepageFragment)
+                            startHomepage()
                         } else {
                             findNavController(
                                 requireActivity(),

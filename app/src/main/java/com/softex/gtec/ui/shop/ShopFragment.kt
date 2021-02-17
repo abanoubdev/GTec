@@ -1,4 +1,4 @@
-package com.softex.gtec.ui.forgetPassword
+package com.softex.gtec.ui.shop
 
 import androidx.fragment.app.viewModels
 import com.softex.gtec.R
@@ -8,14 +8,13 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @ExperimentalCoroutinesApi
 @AndroidEntryPoint
-class ForgetPasswordFragment : BaseFragment(R.layout.fragment_forget_password) {
+class ShopFragment : BaseFragment(R.layout.shop_fragment) {
 
-    private val viewModel: ForgetPasswordViewModel by viewModels()
-    
     override fun initViews() {
     }
 
     override fun subscribeObservers() {
-       
     }
+
+    private val viewModel: ShopViewModel by viewModels()
 }
