@@ -1,8 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.shop.ShopFragment">
 
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/search"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/search_bg"
+                android:ems="10"
+                android:fontFamily="@font/poppins"
+                android:hint="@string/search_in_products"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="15dp"
+                    android:src="@mipmap/search_1" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="15dp"
+                    android:layout_toEndOf="@+id/imageView5"
+                    android:background="@null"
+                    android:fontFamily="@font/poppins"
+                    android:hint="@string/search_in_products"
+                    android:letterSpacing="0.03"
+                    android:lineSpacingExtra="6sp"
+                    android:textColor="#474749"
+                    android:textColorHint="#474749"
+                    android:textSize="13sp"
+                    android:textStyle="normal" />
+            </RelativeLayout>
+
+
+            <TextView
+                android:id="@+id/topCategoriesLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/poppins_bold"
+                android:letterSpacing="0.03"
+                android:lineSpacingExtra="7sp"
+                android:text="@string/top_categories"
+                android:textColor="@color/black_two"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/search" />
+
+            <TextView
+                android:id="@+id/tvSeeAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="15dp"
+                android:fontFamily="@font/poppins_medium"
+                android:letterSpacing="0.03"
+                android:lineSpacingExtra="4sp"
+                android:textColor="#939394"
+                android:textSize="9sp"
+                android:textStyle="normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/search"
+                android:text="@string/see_all_sample" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerTopCategories"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/topCategoriesLabel" />
+
+            <View
+                android:id="@+id/line1"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/very_light_pink"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerTopCategories" />
+
+            <TextView
+                android:id="@+id/electronicsLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/poppins_bold"
+                android:letterSpacing="0.03"
+                android:lineSpacingExtra="7sp"
+                android:text="@string/electronics"
+                android:textColor="@color/black_two"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/line1" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerElectronics"
+                android:layout_width="0dp"
+                android:layout_height="160dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/electronicsLabel" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerBanners"
+                android:layout_width="0dp"
+                android:layout_height="130dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerElectronics" />
+
+            <TextView
+                android:id="@+id/homeApplianceLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/poppins_bold"
+                android:letterSpacing="0.03"
+                android:lineSpacingExtra="7sp"
+                android:text="@string/home_appliance"
+                android:textColor="@color/black_two"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/recyclerElectronics"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerBanners" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerHomeAppliance"
+                android:layout_width="0dp"
+                android:layout_height="160dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/homeApplianceLabel" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="30dp"
+                android:layout_height="2dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/scarlet"
+                app:layout_constraintStart_toStartOf="@id/topCategoriesLabel"
+                app:layout_constraintTop_toBottomOf="@+id/topCategoriesLabel" />
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="30dp"
+                android:layout_height="2dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/scarlet"
+                app:layout_constraintStart_toStartOf="@id/electronicsLabel"
+                app:layout_constraintTop_toBottomOf="@+id/electronicsLabel" />
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="30dp"
+                android:layout_height="2dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/scarlet"
+                app:layout_constraintStart_toStartOf="@id/homeApplianceLabel"
+                app:layout_constraintTop_toBottomOf="@+id/homeApplianceLabel" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
 </FrameLayout>

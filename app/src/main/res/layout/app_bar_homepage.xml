@@ -7,28 +7,29 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/ivMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/menu" />
+        app:srcCompat="@mipmap/menu"
+        tools:ignore="ContentDescription" />
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/ivLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView5"
-        app:layout_constraintStart_toEndOf="@+id/imageView5"
-        app:layout_constraintTop_toTopOf="@+id/imageView5"
-        app:srcCompat="@mipmap/login_logo" />
-
+        app:layout_constraintBottom_toBottomOf="@+id/ivMenu"
+        app:layout_constraintStart_toEndOf="@+id/ivMenu"
+        app:layout_constraintTop_toTopOf="@+id/ivMenu"
+        app:srcCompat="@mipmap/login_logo"
+        tools:ignore="ContentDescription" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/tvUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -43,12 +44,13 @@
         tools:text="User Name" />
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/iconUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView6"
-        app:layout_constraintEnd_toStartOf="@+id/textView6"
-        app:layout_constraintTop_toTopOf="@+id/textView6"
-        app:srcCompat="@mipmap/icon_user" />
+        app:layout_constraintBottom_toBottomOf="@+id/tvUsername"
+        app:layout_constraintEnd_toStartOf="@+id/tvUsername"
+        app:layout_constraintTop_toTopOf="@+id/tvUsername"
+        app:srcCompat="@mipmap/icon_user"
+        tools:ignore="ContentDescription" />
 </androidx.constraintlayout.widget.ConstraintLayout>
