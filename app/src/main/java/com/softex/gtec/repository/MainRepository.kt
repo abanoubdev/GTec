@@ -23,6 +23,7 @@ constructor(
     override suspend fun login(username: String, password: String):
             Flow<DataState<User?>> = flow {
         emit(DataState.Loading)
+
         try {
             val user =
                 retrofitService.mobileLogin(
@@ -47,6 +48,7 @@ constructor(
 
     override suspend fun getCachedUser(): Flow<DataState<User?>> = flow {
         emit(DataState.Loading)
+
         try {
             val cachedList =
                 userDao.getUser()
@@ -62,6 +64,7 @@ constructor(
 
     override suspend fun getNewArrivals(): Flow<DataState<NewArrivalsResponse?>> = flow {
         emit(DataState.Loading)
+
         val newArrivals = retrofitService.getNewArrivals(
             BuildConfig.security_string,
             BuildConfig.server_ip,

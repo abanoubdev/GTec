@@ -15,6 +15,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import java.lang.Exception
 
 @ExperimentalCoroutinesApi
 @HiltViewModel
@@ -26,16 +27,17 @@ constructor(
 
     private val _newArrivalsDataState: MutableLiveData<DataState<NewArrivalsResponse?>> =
         MutableLiveData()
-    val newArrivalsDataState: LiveData<DataState<NewArrivalsResponse?>>
+    val newArrivalsDataState: LiveData<DataState<NewArrivalsResponse?>?>
         get() = _newArrivalsDataState
 
     private val _bannerDataState: MutableLiveData<DataState<BannerResponse?>> = MutableLiveData()
     val bannerDataState: LiveData<DataState<BannerResponse?>>
         get() = _bannerDataState
 
-    private val _menuItemsState: MutableLiveData<DataState<NavigationMenuResponse?>> = MutableLiveData()
-    val menuItemsState: LiveData<DataState<NavigationMenuResponse?>>
-        get() = _menuItemsState
+    private val _menuItemsDataState: MutableLiveData<DataState<NavigationMenuResponse?>> =
+        MutableLiveData()
+    val menuItemsDataState: LiveData<DataState<NavigationMenuResponse?>>
+        get() = _menuItemsDataState
 
     fun setStateEvent(stateEvent: ShopStateEvent) {
         when (stateEvent) {
@@ -53,9 +55,12 @@ constructor(
 
                     mainRepository.getMenuItems()
                         .onEach { dataState ->
-                            _menuItemsState.value = dataState
+                            _menuItemsDataState.value = dataState
                         }.launchIn(viewModelScope)
                 }
+            }
+            else -> {
+                throw Exception("Unknown State")
             }
         }
     }

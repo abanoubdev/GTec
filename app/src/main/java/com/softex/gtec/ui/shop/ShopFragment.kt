@@ -8,7 +8,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.softex.gtec.R
 import com.softex.gtec.databinding.ShopFragmentBinding
+import com.softex.gtec.model.featuredImages.BannerResponse
+import com.softex.gtec.model.menuItems.NavigationMenuResponse
+import com.softex.gtec.model.newArrivals.NewArrivalsResponse
 import com.softex.gtec.ui.BaseFragment
+import com.softex.gtec.util.DataState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
@@ -35,16 +39,58 @@ class ShopFragment : BaseFragment(R.layout.shop_fragment), View.OnClickListener 
 
     override fun subscribeObservers() {
 
-        viewModel.bannerDataState.observe(viewLifecycleOwner, {
+        viewModel.bannerDataState.observe(viewLifecycleOwner, { dataState ->
+            when (dataState) {
+                is DataState.Success<BannerResponse?> -> {
+                    displayLoadingDialog(false)
+                    Log.d("newArrivals", dataState.data.toString())
+                }
 
+                is DataState.Error -> {
+                    displayLoadingDialog(false)
+                    Log.d("newArrivals", dataState.exception.toString())
+                }
+
+                is DataState.Loading -> {
+                    displayLoadingDialog(true)
+                }
+            }
         })
 
-        viewModel.newArrivalsDataState.observe(viewLifecycleOwner, {
+        viewModel.newArrivalsDataState.observe(viewLifecycleOwner, { dataState ->
+            when (dataState) {
+                is DataState.Success<NewArrivalsResponse?> -> {
+                    displayLoadingDialog(false)
+                    Log.d("newArrivals", dataState.data.toString())
+                }
 
+                is DataState.Error -> {
+                    displayLoadingDialog(false)
+                    Log.d("newArrivals", dataState.exception.toString())
+                }
+
+                is DataState.Loading -> {
+                    displayLoadingDialog(true)
+                }
+            }
         })
 
-        viewModel.menuItemsState.observe(viewLifecycleOwner, {
+        viewModel.menuItemsDataState.observe(viewLifecycleOwner, { dataState ->
+            when (dataState) {
+                is DataState.Success<NavigationMenuResponse?> -> {
+                    displayLoadingDialog(false)
+                    Log.d("newArrivals", dataState.data.toString())
+                }
 
+                is DataState.Error -> {
+                    displayLoadingDialog(false)
+                    Log.d("newArrivals", dataState.exception.toString())
+                }
+
+                is DataState.Loading -> {
+                    displayLoadingDialog(true)
+                }
+            }
         })
 
         viewModel.setStateEvent(ShopStateEvent.Shop)
