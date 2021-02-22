@@ -37,7 +37,8 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="15dp"
-                    android:src="@mipmap/search_1" />
+                    android:src="@mipmap/search_1"
+                    tools:ignore="ContentDescription" />
 
                 <EditText
                     android:layout_width="match_parent"
@@ -52,7 +53,9 @@
                     android:textColor="#474749"
                     android:textColorHint="#474749"
                     android:textSize="13sp"
-                    android:textStyle="normal" />
+                    android:textStyle="normal"
+                    android:inputType="text"
+                    tools:ignore="Autofill" />
             </RelativeLayout>
 
 
@@ -82,7 +85,7 @@
                 android:letterSpacing="0.03"
                 android:lineSpacingExtra="4sp"
                 android:textColor="#939394"
-                android:textSize="9sp"
+                android:textSize="12sp"
                 android:textStyle="normal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/search"

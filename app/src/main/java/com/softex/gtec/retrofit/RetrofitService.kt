@@ -52,7 +52,7 @@ interface RetrofitService {
         @Query("InputX.serverIP") serverIP: String,
         @Query("InputX.databaseName") databaseName: String,
         @Query("InputX.encryptedEXAppID") encryptedEXAppID: String,
-        @Query("InputX.encryptedTreeNodeID") encryptedTreeNodeID: String,
+        @Query("InputX.encryptedClassificationID") encryptedClassificationID: String,
     ): NavigationMenuResponse?
 
 }

@@ -26,13 +26,13 @@ constructor(
 
     private val _dataState: MutableLiveData<DataState<User?>> = MutableLiveData()
 
+    val dataState: LiveData<DataState<User?>>
+        get() = _dataState
+
     private val _errorState: MutableLiveData<LoginStateEvent> = MutableLiveData()
 
     var username: String = ""
     var password: String = ""
-
-    val dataState: LiveData<DataState<User?>>
-        get() = _dataState
 
     val errorState: MutableLiveData<LoginStateEvent>
         get() = _errorState

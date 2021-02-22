@@ -30,14 +30,16 @@ android {
             def serverIP = "MC1"
             def databaseName = "GTech_OnlineStore_MC"
             def encryptedEXAppID = "KiYqJCgjLWo5MDEoJDM0IzQ1KCop"
-            def encryptedTreeNodeClassificationID = "KiYqJCgjLWo5MDMxKCQzNCM0NSgqKQ=="
+            def encryptedTreeNodeID = "KiYqJCgjLWo5MDMxKCQzNCM0NSgqKQ=="
+            def encryptedClassificationID = "KiYqJCgjLWo5MDIoJDM0IzQ1KCop"
             def BASE_URL = "http://softex-mc-exapps-ws.azurewebsites.net/"
 
             buildConfigField "String", "security_string", "\"$securityString\""
             buildConfigField "String", "server_ip", "\"$serverIP\""
             buildConfigField "String", "database_name", "\"$databaseName\""
             buildConfigField "String", "encrypted_ex_app_id", "\"$encryptedEXAppID\""
-            buildConfigField "String", "encrypted_ex_tree_node_classification_id", "\"$encryptedTreeNodeClassificationID\""
+            buildConfigField "String", "encrypted_ex_tree_node_id", "\"$encryptedTreeNodeID\""
+            buildConfigField "String", "encrypted_classification_id", "\"$encryptedClassificationID\""
             buildConfigField "String", "base_url", "\"$BASE_URL\""
 
 //            def securityString = "wpKr&\$NDagoDhFNFI\$(O"
@@ -60,12 +62,16 @@ android {
             def serverIP = "104.243.33.149"
             def databaseName = "SoftexDemo"
             def encryptedEXAppID = "KiYqJCgjLWo5MDE2KCQzNCM0NSgqKQ=="
+            def encryptedTreeNodeID = "KiYqJCgjLWo5MDMxKCQzNCM0NSgqKQ=="
+            def encryptedClassificationID = "KiYqJCgjLWo5MDIoJDM0IzQ1KCop"
             def BASE_URL = "http://softex-mc-exapps-ws.azurewebsites.net/"
 
             buildConfigField "String", "security_string", "\"$securityString\""
             buildConfigField "String", "server_ip", "\"$serverIP\""
             buildConfigField "String", "database_name", "\"$databaseName\""
             buildConfigField "String", "encrypted_ex_app_id", "\"$encryptedEXAppID\""
+            buildConfigField "String", "encrypted_ex_tree_node_id", "\"$encryptedTreeNodeID\""
+            buildConfigField "String", "encrypted_classification_id", "\"$encryptedClassificationID\""
             buildConfigField "String", "base_url", "\"$BASE_URL\""
         }
     }
