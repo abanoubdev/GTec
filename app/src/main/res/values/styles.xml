@@ -6,7 +6,6 @@
         <item name="colorAccent">@color/pale_red</item>
         <item name="android:textColorHint">@color/greyish</item>
         <item name="android:windowBackground">@color/white_two</item>
-        <item name="android:typeface">@font/poppins</item>
     </style>
 
     <style name="DialogTheme" parent="Theme.GTEC">

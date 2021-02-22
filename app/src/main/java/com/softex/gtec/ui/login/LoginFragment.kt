@@ -104,9 +104,6 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
                     _binding?.etPassword?.error =
                         context?.getString(R.string.invalid_password)
                 }
-                else -> {
-                    throw Exception("State not found")
-                }
             }
         })
     }
