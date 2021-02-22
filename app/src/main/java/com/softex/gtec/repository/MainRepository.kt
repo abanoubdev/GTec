@@ -55,7 +55,7 @@ constructor(
             if (cachedList.isNotEmpty()) {
                 emit(DataState.Success(cachedList[0]))
             } else {
-                emit(DataState.Success(null))
+                emit(DataState.Error(Exception()))
             }
         } catch (e: Exception) {
             emit(DataState.Error(e))
