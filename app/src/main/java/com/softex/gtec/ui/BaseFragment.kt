@@ -20,7 +20,7 @@ abstract class BaseFragment(layoutId: Int) : Fragment(layoutId) {
     }
 
     protected fun displayLoadingDialog(isLoading: Boolean) {
-//        if (isLoading) {
+//        if (isLoading && dialogFragment != null && !dialogFragment!!.isVisible) {
 //            showDialog()
 //        } else {
 //            if (dialogFragment != null && dialogFragment!!.isVisible)
