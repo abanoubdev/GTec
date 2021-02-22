@@ -2,6 +2,7 @@ package com.softex.gtec.retrofit
 
 import com.softex.gtec.model.User
 import com.softex.gtec.model.featuredImages.BannerResponse
+import com.softex.gtec.model.menuItems.NavigationMenuResponse
 import com.softex.gtec.model.newArrivals.NewArrivalsResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -44,5 +45,14 @@ interface RetrofitService {
         @Query("InputX.encryptedEXAppID") encryptedEXAppID: String,
         @Query("InputX.encryptedTreeNodeID") encryptedTreeNodeID: String,
     ): BannerResponse?
+
+    @GET("api/Shop/GetCategoriesWithClassification")
+    suspend fun getCategoriesWithClassification(
+        @Query("InputX.securityString") securityString: String,
+        @Query("InputX.serverIP") serverIP: String,
+        @Query("InputX.databaseName") databaseName: String,
+        @Query("InputX.encryptedEXAppID") encryptedEXAppID: String,
+        @Query("InputX.encryptedTreeNodeID") encryptedTreeNodeID: String,
+    ): NavigationMenuResponse?
 
 }
