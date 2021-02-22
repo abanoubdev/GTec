@@ -1,6 +1,7 @@
 package com.softex.gtec.util
 
 import com.softex.gtec.BuildConfig
+import com.softex.gtec.extensions.encrypt
 
 object BannerUrlDriller {
 
@@ -10,7 +11,7 @@ object BannerUrlDriller {
         url += "InputX.serverIP=" + BuildConfig.server_ip + "&"
         url += "InputX.databaseName=" + BuildConfig.database_name + "&"
         url += "InputX.encryptedEXAppID=" + BuildConfig.encrypted_ex_app_id + "&"
-        url += "InputX.encryptedFileID=" + SaltEncryption.encrypt(fileId)
+        url += "InputX.encryptedFileID=" + fileId.encrypt()
         return url
     }
 }

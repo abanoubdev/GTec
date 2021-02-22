@@ -28,8 +28,8 @@ abstract class BaseFragment(layoutId: Int) : Fragment(layoutId) {
 //        }
     }
 
-    private fun showDialog() {
-        dialogFragment = LoadingDialog()
-        dialogFragment?.show(requireActivity().supportFragmentManager, "signature")
-    }
+//    private fun showDialog() {
+//        dialogFragment = LoadingDialog()
+//        dialogFragment?.show(requireActivity().supportFragmentManager, "signature")
+//    }
 }
