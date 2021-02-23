@@ -33,4 +33,6 @@
     <color name="brown_grey">#aeaeae</color>
     <color name="pale_grey">#feffff</color>
     <color name="scarlet">#b90c1d</color>
+    <color name="dull_red">#ce2e2e</color>
+    <color name="black_seven">#2b2b2b</color>
 </resources>

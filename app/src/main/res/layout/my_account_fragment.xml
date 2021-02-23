@@ -26,7 +26,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/tvUsername"
+                android:id="@+id/tvNavigationUsername"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
@@ -43,7 +43,7 @@
 
 
             <TextView
-                android:id="@+id/tvEmail"
+                android:id="@+id/tvNavigationEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
@@ -56,7 +56,7 @@
                 android:textSize="15sp"
                 android:textStyle="normal"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvUsername" />
+                app:layout_constraintTop_toBottomOf="@+id/tvNavigationUsername" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageView

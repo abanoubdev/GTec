@@ -35,4 +35,6 @@
     <string name="manage_address">Manage Address</string>
     <string name="your_name">Your Name</string>
     <string name="already_have_account">Already have an account?</string>
+    <string name="logout">Log Out</string>
+    <string name="title_orders">Orders</string>
 </resources>

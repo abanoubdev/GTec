@@ -3,7 +3,15 @@ package com.softex.gtec.extensions
 import android.content.Intent
 import android.text.TextUtils
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.onNavDestinationSelected
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.softex.gtec.ui.homepage.HomepageActivity
 import com.softex.gtec.util.SaltEncryption

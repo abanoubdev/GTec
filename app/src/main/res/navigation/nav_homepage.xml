@@ -26,6 +26,6 @@
     <fragment
         android:id="@+id/navigation_order"
         android:name="com.softex.gtec.ui.order.OrderFragment"
-        android:label="@string/title_offers"
+        android:label="@string/title_orders"
         tools:layout="@layout/order_fragment" />
 </navigation>

@@ -93,7 +93,7 @@ class ShopFragment : BaseFragment(R.layout.shop_fragment), View.OnClickListener 
             }
         })
 
-        viewModel.setStateEvent(ShopStateEvent.Shop)
+//        viewModel.setStateEvent(ShopStateEvent.Shop)
     }
 
     private val viewModel: ShopViewModel by viewModels()
