@@ -3,12 +3,10 @@ package com.softex.gtec.model.menuItems
 data class NavigationMenuResponseItem(
     val ClassificationID: Int,
     val ClassificationName: String,
-    val LstCategories: List<Any>,
+    val LstCategories: List<Category>,
     val LstChildClassification: List<Any>
 ) {
-    override fun toString(): String {
-        return "{ClassificationID=$ClassificationID, ClassificationName='$ClassificationName', LstCategories=$LstCategories, LstChildClassification=$LstChildClassification}"
-    }
+
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -30,5 +28,9 @@ data class NavigationMenuResponseItem(
         result = 31 * result + LstCategories.hashCode()
         result = 31 * result + LstChildClassification.hashCode()
         return result
+    }
+
+    override fun toString(): String {
+        return "{ClassificationID=$ClassificationID, ClassificationName='$ClassificationName', LstCategories=$LstCategories, LstChildClassification=$LstChildClassification}"
     }
 }

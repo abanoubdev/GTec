@@ -4,6 +4,7 @@ import com.softex.gtec.model.User
 import com.softex.gtec.model.featuredImages.BannerResponse
 import com.softex.gtec.model.menuItems.NavigationMenuResponse
 import com.softex.gtec.model.newArrivals.NewArrivalsResponse
+import com.softex.gtec.model.topCategories.TopCategoriesResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -26,7 +27,7 @@ interface RetrofitService {
         @Query("InputX.databaseName") databaseName: String,
         @Query("InputX.encryptedEXAppID") encryptedEXAppID: String,
         @Query("InputX.encryptedTreeNodeID") encryptedTreeNodeID: String,
-    )
+    ): TopCategoriesResponse?
 
     @GET("api/Main/GetNewArrivals")
     suspend fun getNewArrivals(

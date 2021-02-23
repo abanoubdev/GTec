@@ -1,5 +1,7 @@
 package com.softex.gtec.model.newArrivals
 
+import com.softex.gtec.model.FeaturedImages
+
 data class NewArrivalsResponseItem(
     val DiscountPercentage: Int,
     val ItemGroupID: Int,

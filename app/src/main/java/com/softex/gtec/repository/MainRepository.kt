@@ -6,6 +6,7 @@ import com.softex.gtec.model.User
 import com.softex.gtec.model.featuredImages.BannerResponse
 import com.softex.gtec.model.menuItems.NavigationMenuResponse
 import com.softex.gtec.model.newArrivals.NewArrivalsResponse
+import com.softex.gtec.model.topCategories.TopCategoriesResponse
 import com.softex.gtec.retrofit.RetrofitService
 import com.softex.gtec.room.UserDao
 import com.softex.gtec.util.DataState
@@ -106,6 +107,26 @@ constructor(
 
         if (banners != null && banners.isNotEmpty()) {
             emit(DataState.Success(banners))
+        } else {
+            emit(DataState.Error(Exception("MenuItems are empty")))
+        }
+    }
+
+    override suspend fun getTopCategories(): Flow<DataState<TopCategoriesResponse?>> = flow {
+        emit(DataState.Loading)
+
+        //ToDo : to be changed later ,Ahmed told me to set it in request
+        val encryptedTreeNode = "KiYqJCgjLWo5MDE4KCQzNCM0NSgqKQ=="
+        val topCategories = retrofitService.getTopCategories(
+            BuildConfig.security_string,
+            BuildConfig.server_ip,
+            BuildConfig.database_name,
+            BuildConfig.encrypted_ex_app_id,
+            encryptedTreeNode
+        )
+
+        if (topCategories != null && topCategories.isNotEmpty()) {
+            emit(DataState.Success(topCategories))
         } else {
             emit(DataState.Error(Exception("MenuItems are empty")))
         }
