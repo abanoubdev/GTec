@@ -1,10 +1,10 @@
 package com.softex.gtec.repository
 
 import com.softex.gtec.model.User
-import com.softex.gtec.model.featuredImages.BannerResponse
-import com.softex.gtec.model.menuItems.NavigationMenuResponse
-import com.softex.gtec.model.newArrivals.NewArrivalsResponse
-import com.softex.gtec.model.topCategories.TopCategoriesResponse
+import com.softex.gtec.model.featuredImages.BannerResponseItem
+import com.softex.gtec.model.menuItems.NavigationMenuResponseItem
+import com.softex.gtec.model.newArrivals.NewArrivalsResponseItem
+import com.softex.gtec.model.topCategories.TopCategoriesResponseItem
 import com.softex.gtec.util.DataState
 import kotlinx.coroutines.flow.Flow
 
@@ -14,11 +14,13 @@ interface RepositorySource {
 
     suspend fun getCachedUser(): Flow<DataState<User?>>
 
-    suspend fun getTopCategories(): Flow<DataState<TopCategoriesResponse?>>
+    suspend fun getTopCategories(): Flow<DataState<List<TopCategoriesResponseItem>?>>
 
-    suspend fun getNewArrivals(): Flow<DataState<NewArrivalsResponse?>>
+    suspend fun getElectronics(): Flow<DataState<List<NewArrivalsResponseItem>?>>
 
-    suspend fun getBanners(): Flow<DataState<BannerResponse?>>
+    suspend fun getHomeAppliance(): Flow<DataState<List<NewArrivalsResponseItem>?>>
 
-    suspend fun getMenuItems(): Flow<DataState<NavigationMenuResponse?>>
+    suspend fun getBanners(): Flow<DataState<List<BannerResponseItem>?>>
+
+    suspend fun getMenuItems(): Flow<DataState<List<NavigationMenuResponseItem>?>>
 }

@@ -3,10 +3,10 @@ package com.softex.gtec.repository
 import com.softex.gtec.BuildConfig
 import com.softex.gtec.extensions.encrypt
 import com.softex.gtec.model.User
-import com.softex.gtec.model.featuredImages.BannerResponse
-import com.softex.gtec.model.menuItems.NavigationMenuResponse
-import com.softex.gtec.model.newArrivals.NewArrivalsResponse
-import com.softex.gtec.model.topCategories.TopCategoriesResponse
+import com.softex.gtec.model.featuredImages.BannerResponseItem
+import com.softex.gtec.model.menuItems.NavigationMenuResponseItem
+import com.softex.gtec.model.newArrivals.NewArrivalsResponseItem
+import com.softex.gtec.model.topCategories.TopCategoriesResponseItem
 import com.softex.gtec.retrofit.RetrofitService
 import com.softex.gtec.room.UserDao
 import com.softex.gtec.util.DataState
@@ -58,33 +58,55 @@ constructor(
         }
     }
 
-    override suspend fun getNewArrivals(): Flow<DataState<NewArrivalsResponse?>> = flow {
+    override suspend fun getElectronics(): Flow<DataState<List<NewArrivalsResponseItem>?>> = flow {
         emit(DataState.Loading)
+        val treeNodeID = "KiYqJCgjLWo5MDE5KCQzNCM0NSgqKQ=="
 
-        val newArrivals = retrofitService.getNewArrivals(
+        val electronics = retrofitService.getNewArrivals(
             BuildConfig.security_string,
             BuildConfig.server_ip,
             BuildConfig.database_name,
             BuildConfig.encrypted_ex_app_id,
-            BuildConfig.encrypted_ex_tree_node_id
+            treeNodeID
         )
 
-        if (newArrivals != null && newArrivals.isNotEmpty()) {
-            emit(DataState.Success(newArrivals))
+        if (electronics != null && electronics.isNotEmpty()) {
+            emit(DataState.Success(electronics))
         } else {
-            emit(DataState.Error(Exception("New Arrivals is Empty")))
+            emit(DataState.Error(Exception("Electronics is Empty")))
         }
     }
 
-    override suspend fun getBanners(): Flow<DataState<BannerResponse?>> = flow {
+    override suspend fun getHomeAppliance(): Flow<DataState<List<NewArrivalsResponseItem>?>> = flow {
         emit(DataState.Loading)
+        val treeNodeID = "KiYqJCgjLWo5MDIwKCQzNCM0NSgqKQ=="
+
+        val electronics = retrofitService.getNewArrivals(
+            BuildConfig.security_string,
+            BuildConfig.server_ip,
+            BuildConfig.database_name,
+            BuildConfig.encrypted_ex_app_id,
+            treeNodeID
+        )
+
+        if (electronics != null && electronics.isNotEmpty()) {
+            emit(DataState.Success(electronics))
+        } else {
+            emit(DataState.Error(Exception("HomeAppliance is Empty")))
+        }
+    }
+
+    override suspend fun getBanners(): Flow<DataState<List<BannerResponseItem>?>> = flow {
+        emit(DataState.Loading)
+
+        val treeNodeId = "KiYqJCgjLWo5MDMxKCQzNCM0NSgqKQ=="
 
         val banners = retrofitService.getBanners(
             BuildConfig.security_string,
             BuildConfig.server_ip,
             BuildConfig.database_name,
             BuildConfig.encrypted_ex_app_id,
-            BuildConfig.encrypted_ex_tree_node_id
+            treeNodeId
         )
 
         if (banners != null && banners.isNotEmpty()) {
@@ -94,15 +116,17 @@ constructor(
         }
     }
 
-    override suspend fun getMenuItems(): Flow<DataState<NavigationMenuResponse?>> = flow {
+    override suspend fun getMenuItems(): Flow<DataState<List<NavigationMenuResponseItem>?>> = flow {
         emit(DataState.Loading)
+
+        val classificationID = "KiYqJCgjLWo5MDIoJDM0IzQ1KCop"
 
         val banners = retrofitService.getCategoriesWithClassification(
             BuildConfig.security_string,
             BuildConfig.server_ip,
             BuildConfig.database_name,
             BuildConfig.encrypted_ex_app_id,
-            BuildConfig.encrypted_classification_id
+            classificationID
         )
 
         if (banners != null && banners.isNotEmpty()) {
@@ -112,23 +136,25 @@ constructor(
         }
     }
 
-    override suspend fun getTopCategories(): Flow<DataState<TopCategoriesResponse?>> = flow {
-        emit(DataState.Loading)
+    override suspend fun getTopCategories(): Flow<DataState<List<TopCategoriesResponseItem>?>> =
+        flow {
 
-        //ToDo : to be changed later ,Ahmed told me to set it in request
-        val encryptedTreeNode = "KiYqJCgjLWo5MDE4KCQzNCM0NSgqKQ=="
-        val topCategories = retrofitService.getTopCategories(
-            BuildConfig.security_string,
-            BuildConfig.server_ip,
-            BuildConfig.database_name,
-            BuildConfig.encrypted_ex_app_id,
-            encryptedTreeNode
-        )
+            emit(DataState.Loading)
+            //ToDo : to be changed later ,Ahmed told me to set it in request
+            val encryptedTreeNode = "KiYqJCgjLWo5MDE4KCQzNCM0NSgqKQ=="
 
-        if (topCategories != null && topCategories.isNotEmpty()) {
-            emit(DataState.Success(topCategories))
-        } else {
-            emit(DataState.Error(Exception("MenuItems are empty")))
+            val topCategories = retrofitService.getTopCategories(
+                BuildConfig.security_string,
+                BuildConfig.server_ip,
+                BuildConfig.database_name,
+                BuildConfig.encrypted_ex_app_id,
+                encryptedTreeNode
+            )
+
+            if (!topCategories.isNullOrEmpty()) {
+                emit(DataState.Success(topCategories))
+            } else {
+                emit(DataState.Error(Exception("TopCategories are empty")))
+            }
         }
-    }
 }

@@ -26,52 +26,34 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
-            def securityString = "7[S6hpi>Sy!q}cUOIz#a"
-            def serverIP = "MC1"
+            //live
+            def securityString = "m2(Pt&>Vcot@%(5o^5iG"
+            def serverIP = "MC1.database.windows.net"
             def databaseName = "GTech_OnlineStore_MC"
             def encryptedEXAppID = "KiYqJCgjLWo5MDEoJDM0IzQ1KCop"
-            def encryptedTreeNodeID = "KiYqJCgjLWo5MDMxKCQzNCM0NSgqKQ=="
-            def encryptedClassificationID = "KiYqJCgjLWo5MDIoJDM0IzQ1KCop"
             def BASE_URL = "http://softex-mc-exapps-ws.azurewebsites.net/"
 
             buildConfigField "String", "security_string", "\"$securityString\""
             buildConfigField "String", "server_ip", "\"$serverIP\""
             buildConfigField "String", "database_name", "\"$databaseName\""
             buildConfigField "String", "encrypted_ex_app_id", "\"$encryptedEXAppID\""
-            buildConfigField "String", "encrypted_ex_tree_node_id", "\"$encryptedTreeNodeID\""
-            buildConfigField "String", "encrypted_classification_id", "\"$encryptedClassificationID\""
             buildConfigField "String", "base_url", "\"$BASE_URL\""
-
-//            def securityString = "wpKr&\$NDagoDhFNFI\$(O"
-//            def serverIP = "104.243.33.149"
-//            def databaseName = "SoftexDemo"
-//            def encryptedEXAppID = "KiYqJCgjLWo5MDE2KCQzNCM0NSgqKQ=="
-//            def BASE_URL = "http://softex-mc-exapps-ws.azurewebsites.net/"
-//
-//            buildConfigField "String", "security_string", "\"$securityString\""
-//            buildConfigField "String", "server_ip", "\"$serverIP\""
-//            buildConfigField "String", "database_name", "\"$databaseName\""
-//            buildConfigField "String", "encrypted_ex_app_id", "\"$encryptedEXAppID\""
-//            buildConfigField "String", "base_url", "\"$BASE_URL\""
         }
 
         debug {
             debuggable true
 
-            def securityString = "wpKr&\$NDagoDhFNFI\$(O"
-            def serverIP = "104.243.33.149"
-            def databaseName = "SoftexDemo"
-            def encryptedEXAppID = "KiYqJCgjLWo5MDE2KCQzNCM0NSgqKQ=="
-            def encryptedTreeNodeID = "KiYqJCgjLWo5MDMxKCQzNCM0NSgqKQ=="
-            def encryptedClassificationID = "KiYqJCgjLWo5MDIoJDM0IzQ1KCop"
+            //live
+            def securityString = "m2(Pt&>Vcot@%(5o^5iG"
+            def serverIP = "MC1.database.windows.net"
+            def databaseName = "GTech_OnlineStore_MC"
+            def encryptedEXAppID = "KiYqJCgjLWo5MDEoJDM0IzQ1KCop"
             def BASE_URL = "http://softex-mc-exapps-ws.azurewebsites.net/"
 
             buildConfigField "String", "security_string", "\"$securityString\""
             buildConfigField "String", "server_ip", "\"$serverIP\""
             buildConfigField "String", "database_name", "\"$databaseName\""
             buildConfigField "String", "encrypted_ex_app_id", "\"$encryptedEXAppID\""
-            buildConfigField "String", "encrypted_ex_tree_node_id", "\"$encryptedTreeNodeID\""
-            buildConfigField "String", "encrypted_classification_id", "\"$encryptedClassificationID\""
             buildConfigField "String", "base_url", "\"$BASE_URL\""
         }
     }
@@ -124,6 +106,7 @@ dependencies {
     def retrofit = "2.9.0"
     implementation "com.squareup.retrofit2:retrofit:$retrofit"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit"
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
 
     //Room
     def room = "2.2.6"
@@ -143,7 +126,8 @@ dependencies {
     //Gson
     implementation 'com.google.code.gson:gson:2.8.6'
 
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
+    def recyclerview_expandable_version = "0.1"
+    implementation "com.hendraanggrian.recyclerview:recyclerview-expandable:$recyclerview_expandable_version"
 
     //Testing
     def test_version = "1.3.0"

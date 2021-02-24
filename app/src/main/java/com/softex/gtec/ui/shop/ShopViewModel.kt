@@ -5,10 +5,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.softex.gtec.model.featuredImages.BannerResponse
-import com.softex.gtec.model.menuItems.NavigationMenuResponse
-import com.softex.gtec.model.newArrivals.NewArrivalsResponse
-import com.softex.gtec.model.topCategories.TopCategoriesResponse
+import com.softex.gtec.model.featuredImages.BannerResponseItem
+import com.softex.gtec.model.menuItems.NavigationMenuResponseItem
+import com.softex.gtec.model.newArrivals.NewArrivalsResponseItem
+import com.softex.gtec.model.topCategories.TopCategoriesResponseItem
 import com.softex.gtec.repository.RepositorySource
 import com.softex.gtec.util.DataState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -26,23 +26,28 @@ constructor(
     private val mainRepository: RepositorySource
 ) : ViewModel() {
 
-    private val _newArrivalsDataState: MutableLiveData<DataState<NewArrivalsResponse?>> =
+    private val _electronicsDataState: MutableLiveData<DataState<List<NewArrivalsResponseItem>?>> =
         MutableLiveData()
-    val newArrivalsDataState: LiveData<DataState<NewArrivalsResponse?>?>
-        get() = _newArrivalsDataState
+    val electronicsDataState: LiveData<DataState<List<NewArrivalsResponseItem>?>?>
+        get() = _electronicsDataState
 
-    private val _topCategoriesDataState: MutableLiveData<DataState<TopCategoriesResponse?>> =
+    private val _homeApplianceDataState: MutableLiveData<DataState<List<NewArrivalsResponseItem>?>> =
         MutableLiveData()
-    val topCategoriesDataState: LiveData<DataState<TopCategoriesResponse?>?>
+    val homeApplianceDataState: LiveData<DataState<List<NewArrivalsResponseItem>?>?>
+        get() = _homeApplianceDataState
+
+    private val _topCategoriesDataState: MutableLiveData<DataState<List<TopCategoriesResponseItem>?>> =
+        MutableLiveData()
+    val topCategoriesDataState: LiveData<DataState<List<TopCategoriesResponseItem>?>?>
         get() = _topCategoriesDataState
 
-    private val _bannerDataState: MutableLiveData<DataState<BannerResponse?>> = MutableLiveData()
-    val bannerDataState: LiveData<DataState<BannerResponse?>>
+    private val _bannerDataState: MutableLiveData<DataState<List<BannerResponseItem>?>> = MutableLiveData()
+    val bannerDataState: LiveData<DataState<List<BannerResponseItem>?>>
         get() = _bannerDataState
 
-    private val _menuItemsDataState: MutableLiveData<DataState<NavigationMenuResponse?>> =
+    private val _menuItemsDataState: MutableLiveData<DataState<List<NavigationMenuResponseItem>?>> =
         MutableLiveData()
-    val menuItemsDataState: LiveData<DataState<NavigationMenuResponse?>>
+    val menuItemsDataState: LiveData<DataState<List<NavigationMenuResponseItem>?>>
         get() = _menuItemsDataState
 
     fun setStateEvent(stateEvent: ShopStateEvent) {
@@ -55,15 +60,20 @@ constructor(
                             _topCategoriesDataState.value = dataState
                         }.launchIn(viewModelScope)
 
-                    mainRepository.getNewArrivals()
+                    mainRepository.getElectronics()
                         .onEach { dataState ->
-                            _newArrivalsDataState.value = dataState
+                            _electronicsDataState.value = dataState
                         }.launchIn(viewModelScope)
 
-//                    mainRepository.getBanners()
-//                        .onEach { dataState ->
-//                            _bannerDataState.value = dataState
-//                        }.launchIn(viewModelScope)
+                    mainRepository.getHomeAppliance()
+                        .onEach { dataState ->
+                            _homeApplianceDataState.value = dataState
+                        }.launchIn(viewModelScope)
+
+                    mainRepository.getBanners()
+                        .onEach { dataState ->
+                            _bannerDataState.value = dataState
+                        }.launchIn(viewModelScope)
 
                     mainRepository.getMenuItems()
                         .onEach { dataState ->
