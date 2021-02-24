@@ -157,7 +157,7 @@ class ShopFragment : BaseFragment(R.layout.shop_fragment), View.OnClickListener,
         }
     }
 
-    override fun onItemCLicked(item: TopCategoriesResponseItem) {
+    override fun onTopCategoryItemCLicked(item: TopCategoriesResponseItem) {
     }
 
     override fun onBannerItemClicked(item: BannerResponseItem) {

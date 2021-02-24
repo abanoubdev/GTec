@@ -48,10 +48,10 @@ class TopCategoriesAdapter(
     }
 
     interface TopCategoriesItemClickListener {
-        fun onItemCLicked(item: TopCategoriesResponseItem)
+        fun onTopCategoryItemCLicked(item: TopCategoriesResponseItem)
     }
 
     override fun invoke(item: TopCategoriesResponseItem) {
-        listener.onItemCLicked(item)
+        listener.onTopCategoryItemCLicked(item)
     }
 }
