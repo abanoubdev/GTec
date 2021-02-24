@@ -7,7 +7,6 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.softex.gtec.R
-import com.softex.gtec.extensions.encrypt
 import com.softex.gtec.model.featuredImages.BannerResponseItem
 import com.softex.gtec.util.BannerUrlDriller
 
