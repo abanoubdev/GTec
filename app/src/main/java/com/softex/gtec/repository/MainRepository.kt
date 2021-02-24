@@ -119,12 +119,14 @@ constructor(
     override suspend fun getMenuItems(): Flow<DataState<List<NavigationMenuResponseItem>?>> = flow {
         emit(DataState.Loading)
 
+        val classificationID = "KiYqJCgjLWo5MDIoJDM0IzQ1KCop"
+
         val banners = retrofitService.getCategoriesWithClassification(
             BuildConfig.security_string,
             BuildConfig.server_ip,
             BuildConfig.database_name,
             BuildConfig.encrypted_ex_app_id,
-            BuildConfig.encrypted_classification_id
+            classificationID
         )
 
         if (banners != null && banners.isNotEmpty()) {
@@ -136,9 +138,11 @@ constructor(
 
     override suspend fun getTopCategories(): Flow<DataState<List<TopCategoriesResponseItem>?>> =
         flow {
+
             emit(DataState.Loading)
             //ToDo : to be changed later ,Ahmed told me to set it in request
             val encryptedTreeNode = "KiYqJCgjLWo5MDE4KCQzNCM0NSgqKQ=="
+
             val topCategories = retrofitService.getTopCategories(
                 BuildConfig.security_string,
                 BuildConfig.server_ip,
