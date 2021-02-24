@@ -1,10 +1,10 @@
 package com.softex.gtec.retrofit
 
 import com.softex.gtec.model.User
-import com.softex.gtec.model.featuredImages.BannerResponse
-import com.softex.gtec.model.menuItems.NavigationMenuResponse
-import com.softex.gtec.model.newArrivals.NewArrivalsResponse
-import com.softex.gtec.model.topCategories.TopCategoriesResponse
+import com.softex.gtec.model.featuredImages.BannerResponseItem
+import com.softex.gtec.model.menuItems.NavigationMenuResponseItem
+import com.softex.gtec.model.newArrivals.NewArrivalsResponseItem
+import com.softex.gtec.model.topCategories.TopCategoriesResponseItem
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -27,7 +27,7 @@ interface RetrofitService {
         @Query("InputX.databaseName") databaseName: String,
         @Query("InputX.encryptedEXAppID") encryptedEXAppID: String,
         @Query("InputX.encryptedTreeNodeID") encryptedTreeNodeID: String,
-    ): TopCategoriesResponse?
+    ): List<TopCategoriesResponseItem>?
 
     @GET("api/Main/GetNewArrivals")
     suspend fun getNewArrivals(
@@ -36,7 +36,7 @@ interface RetrofitService {
         @Query("InputX.databaseName") databaseName: String,
         @Query("InputX.encryptedEXAppID") encryptedEXAppID: String,
         @Query("InputX.encryptedTreeNodeID") encryptedTreeNodeID: String,
-    ): NewArrivalsResponse?
+    ): List<NewArrivalsResponseItem>?
 
     @GET("api/Main/GetBannerImgInfo")
     suspend fun getBanners(
@@ -45,7 +45,7 @@ interface RetrofitService {
         @Query("InputX.databaseName") databaseName: String,
         @Query("InputX.encryptedEXAppID") encryptedEXAppID: String,
         @Query("InputX.encryptedTreeNodeClassificationID") encryptedTreeNodeClassificationID: String,
-    ): BannerResponse?
+    ): List<BannerResponseItem>?
 
     @GET("api/Shop/GetCategoriesWithClassification")
     suspend fun getCategoriesWithClassification(
@@ -54,6 +54,6 @@ interface RetrofitService {
         @Query("InputX.databaseName") databaseName: String,
         @Query("InputX.encryptedEXAppID") encryptedEXAppID: String,
         @Query("InputX.encryptedClassificationID") encryptedClassificationID: String,
-    ): NavigationMenuResponse?
+    ): List<NavigationMenuResponseItem>?
 
 }
