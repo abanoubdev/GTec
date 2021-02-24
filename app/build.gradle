@@ -26,10 +26,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
-            def securityString = "wpKr&\$NDagoDhFNFI\$(O"
+            //live
+            def securityString = "m2(Pt&>Vcot@%(5o^5iG"
             def serverIP = "MC1.database.windows.net"
             def databaseName = "GTech_OnlineStore_MC"
-            def encryptedEXAppID = "KiYqJCgjLWo5MDE2KCQzNCM0NSgqKQ=="
+            def encryptedEXAppID = "KiYqJCgjLWo5MDEoJDM0IzQ1KCop"
             def BASE_URL = "http://softex-mc-exapps-ws.azurewebsites.net/"
 
             buildConfigField "String", "security_string", "\"$securityString\""
@@ -42,10 +43,11 @@ android {
         debug {
             debuggable true
 
-            def securityString = "wpKr&\$NDagoDhFNFI\$(O"
+            //live
+            def securityString = "m2(Pt&>Vcot@%(5o^5iG"
             def serverIP = "MC1.database.windows.net"
             def databaseName = "GTech_OnlineStore_MC"
-            def encryptedEXAppID = "KiYqJCgjLWo5MDE2KCQzNCM0NSgqKQ=="
+            def encryptedEXAppID = "KiYqJCgjLWo5MDEoJDM0IzQ1KCop"
             def BASE_URL = "http://softex-mc-exapps-ws.azurewebsites.net/"
 
             buildConfigField "String", "security_string", "\"$securityString\""

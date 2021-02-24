@@ -10,6 +10,7 @@ import retrofit2.http.Query
 
 interface RetrofitService {
 
+    //Done
     @GET("api/Account/MobileLogin")
     suspend fun mobileLogin(
         @Query("InputX.securityString") securityString: String,
@@ -20,6 +21,7 @@ interface RetrofitService {
         @Query("InputX.encryptedPassword") encryptedPassword: String
     ): User?
 
+    //Done
     @GET("api/Main/GetCategoriesFeaturedImages")
     suspend fun getTopCategories(
         @Query("InputX.securityString") securityString: String,
@@ -29,6 +31,7 @@ interface RetrofitService {
         @Query("InputX.encryptedTreeNodeID") encryptedTreeNodeID: String,
     ): List<TopCategoriesResponseItem>?
 
+    //Done (Electronics & Home Appliance)
     @GET("api/Main/GetNewArrivals")
     suspend fun getNewArrivals(
         @Query("InputX.securityString") securityString: String,
@@ -37,6 +40,7 @@ interface RetrofitService {
         @Query("InputX.encryptedEXAppID") encryptedEXAppID: String,
         @Query("InputX.encryptedTreeNodeID") encryptedTreeNodeID: String,
     ): List<NewArrivalsResponseItem>?
+
 
     @GET("api/Main/GetBannerImgInfo")
     suspend fun getBanners(
@@ -47,6 +51,7 @@ interface RetrofitService {
         @Query("InputX.encryptedTreeNodeClassificationID") encryptedTreeNodeClassificationID: String,
     ): List<BannerResponseItem>?
 
+
     @GET("api/Shop/GetCategoriesWithClassification")
     suspend fun getCategoriesWithClassification(
         @Query("InputX.securityString") securityString: String,
@@ -55,5 +60,4 @@ interface RetrofitService {
         @Query("InputX.encryptedEXAppID") encryptedEXAppID: String,
         @Query("InputX.encryptedClassificationID") encryptedClassificationID: String,
     ): List<NavigationMenuResponseItem>?
-
 }
