@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.softex.gtec.model.featuredImages.BannerResponse
 import com.softex.gtec.model.menuItems.NavigationMenuResponse
 import com.softex.gtec.model.newArrivals.NewArrivalsResponse
+import com.softex.gtec.model.topCategories.TopCategoriesResponse
 import com.softex.gtec.repository.RepositorySource
 import com.softex.gtec.util.DataState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -30,6 +31,11 @@ constructor(
     val newArrivalsDataState: LiveData<DataState<NewArrivalsResponse?>?>
         get() = _newArrivalsDataState
 
+    private val _topCategoriesDataState: MutableLiveData<DataState<TopCategoriesResponse?>> =
+        MutableLiveData()
+    val topCategoriesDataState: LiveData<DataState<TopCategoriesResponse?>?>
+        get() = _topCategoriesDataState
+
     private val _bannerDataState: MutableLiveData<DataState<BannerResponse?>> = MutableLiveData()
     val bannerDataState: LiveData<DataState<BannerResponse?>>
         get() = _bannerDataState
@@ -43,15 +49,21 @@ constructor(
         when (stateEvent) {
             ShopStateEvent.Shop -> {
                 viewModelScope.launch {
+
+                    mainRepository.getTopCategories()
+                        .onEach { dataState ->
+                            _topCategoriesDataState.value = dataState
+                        }.launchIn(viewModelScope)
+
                     mainRepository.getNewArrivals()
                         .onEach { dataState ->
                             _newArrivalsDataState.value = dataState
                         }.launchIn(viewModelScope)
 
-                    mainRepository.getBanners()
-                        .onEach { dataState ->
-                            _bannerDataState.value = dataState
-                        }.launchIn(viewModelScope)
+//                    mainRepository.getBanners()
+//                        .onEach { dataState ->
+//                            _bannerDataState.value = dataState
+//                        }.launchIn(viewModelScope)
 
                     mainRepository.getMenuItems()
                         .onEach { dataState ->
