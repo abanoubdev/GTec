@@ -57,7 +57,25 @@ class ShopFragment : BaseFragment(R.layout.shop_fragment), View.OnClickListener 
             }
         })
 
-        viewModel.newArrivalsDataState.observe(viewLifecycleOwner, { dataState ->
+        viewModel.electronicsDataState.observe(viewLifecycleOwner, { dataState ->
+            when (dataState) {
+                is DataState.Success<NewArrivalsResponse?> -> {
+                    displayLoadingDialog(false)
+                    Log.d("newArrivals", dataState.data.toString())
+                }
+
+                is DataState.Error -> {
+                    displayLoadingDialog(false)
+                    Log.d("newArrivals", dataState.exception.toString())
+                }
+
+                is DataState.Loading -> {
+                    displayLoadingDialog(true)
+                }
+            }
+        })
+
+        viewModel.homeApplianceDataState.observe(viewLifecycleOwner, { dataState ->
             when (dataState) {
                 is DataState.Success<NewArrivalsResponse?> -> {
                     displayLoadingDialog(false)

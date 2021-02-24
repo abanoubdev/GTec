@@ -16,7 +16,9 @@ interface RepositorySource {
 
     suspend fun getTopCategories(): Flow<DataState<TopCategoriesResponse?>>
 
-    suspend fun getNewArrivals(): Flow<DataState<NewArrivalsResponse?>>
+    suspend fun getElectronics(): Flow<DataState<NewArrivalsResponse?>>
+
+    suspend fun getHomeAppliance(): Flow<DataState<NewArrivalsResponse?>>
 
     suspend fun getBanners(): Flow<DataState<BannerResponse?>>
 

@@ -58,19 +58,39 @@ constructor(
         }
     }
 
-    override suspend fun getNewArrivals(): Flow<DataState<NewArrivalsResponse?>> = flow {
+    override suspend fun getElectronics(): Flow<DataState<NewArrivalsResponse?>> = flow {
         emit(DataState.Loading)
+        val treeNodeID = "KiYqJCgjLWo5MDE5KCQzNCM0NSgqKQ=="
 
-        val newArrivals = retrofitService.getNewArrivals(
+        val electronics = retrofitService.getNewArrivals(
             BuildConfig.security_string,
             BuildConfig.server_ip,
             BuildConfig.database_name,
             BuildConfig.encrypted_ex_app_id,
-            BuildConfig.encrypted_ex_tree_node_id
+            treeNodeID
         )
 
-        if (newArrivals != null && newArrivals.isNotEmpty()) {
-            emit(DataState.Success(newArrivals))
+        if (electronics != null && electronics.isNotEmpty()) {
+            emit(DataState.Success(electronics))
+        } else {
+            emit(DataState.Error(Exception("New Arrivals is Empty")))
+        }
+    }
+
+    override suspend fun getHomeAppliance(): Flow<DataState<NewArrivalsResponse?>> = flow {
+        emit(DataState.Loading)
+        val treeNodeID = "KiYqJCgjLWo5MDIwKCQzNCM0NSgqKQ=="
+
+        val electronics = retrofitService.getNewArrivals(
+            BuildConfig.security_string,
+            BuildConfig.server_ip,
+            BuildConfig.database_name,
+            BuildConfig.encrypted_ex_app_id,
+            treeNodeID
+        )
+
+        if (electronics != null && electronics.isNotEmpty()) {
+            emit(DataState.Success(electronics))
         } else {
             emit(DataState.Error(Exception("New Arrivals is Empty")))
         }

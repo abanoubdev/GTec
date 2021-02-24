@@ -26,10 +26,15 @@ constructor(
     private val mainRepository: RepositorySource
 ) : ViewModel() {
 
-    private val _newArrivalsDataState: MutableLiveData<DataState<NewArrivalsResponse?>> =
+    private val _electronicsDataState: MutableLiveData<DataState<NewArrivalsResponse?>> =
         MutableLiveData()
-    val newArrivalsDataState: LiveData<DataState<NewArrivalsResponse?>?>
-        get() = _newArrivalsDataState
+    val electronicsDataState: LiveData<DataState<NewArrivalsResponse?>?>
+        get() = _electronicsDataState
+
+    private val _homeApplianceDataState: MutableLiveData<DataState<NewArrivalsResponse?>> =
+        MutableLiveData()
+    val homeApplianceDataState: LiveData<DataState<NewArrivalsResponse?>?>
+        get() = _homeApplianceDataState
 
     private val _topCategoriesDataState: MutableLiveData<DataState<TopCategoriesResponse?>> =
         MutableLiveData()
@@ -55,15 +60,20 @@ constructor(
                             _topCategoriesDataState.value = dataState
                         }.launchIn(viewModelScope)
 
-                    mainRepository.getNewArrivals()
+                    mainRepository.getElectronics()
                         .onEach { dataState ->
-                            _newArrivalsDataState.value = dataState
+                            _electronicsDataState.value = dataState
                         }.launchIn(viewModelScope)
 
-//                    mainRepository.getBanners()
-//                        .onEach { dataState ->
-//                            _bannerDataState.value = dataState
-//                        }.launchIn(viewModelScope)
+                    mainRepository.getHomeAppliance()
+                        .onEach { dataState ->
+                            _homeApplianceDataState.value = dataState
+                        }.launchIn(viewModelScope)
+
+                    mainRepository.getBanners()
+                        .onEach { dataState ->
+                            _bannerDataState.value = dataState
+                        }.launchIn(viewModelScope)
 
                     mainRepository.getMenuItems()
                         .onEach { dataState ->
