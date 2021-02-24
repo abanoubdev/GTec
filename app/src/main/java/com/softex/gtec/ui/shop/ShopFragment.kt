@@ -11,6 +11,7 @@ import com.softex.gtec.databinding.ShopFragmentBinding
 import com.softex.gtec.model.featuredImages.BannerResponse
 import com.softex.gtec.model.menuItems.NavigationMenuResponse
 import com.softex.gtec.model.newArrivals.NewArrivalsResponse
+import com.softex.gtec.model.topCategories.TopCategoriesResponse
 import com.softex.gtec.ui.BaseFragment
 import com.softex.gtec.util.DataState
 import dagger.hilt.android.AndroidEntryPoint
@@ -38,6 +39,23 @@ class ShopFragment : BaseFragment(R.layout.shop_fragment), View.OnClickListener 
     }
 
     override fun subscribeObservers() {
+        viewModel.topCategoriesDataState.observe(viewLifecycleOwner, { dataState ->
+            when (dataState) {
+                is DataState.Success<TopCategoriesResponse?> -> {
+                    displayLoadingDialog(false)
+                    Log.d("newArrivals", dataState.data.toString())
+                }
+
+                is DataState.Error -> {
+                    displayLoadingDialog(false)
+                    Log.d("newArrivals", dataState.exception.toString())
+                }
+
+                is DataState.Loading -> {
+                    displayLoadingDialog(true)
+                }
+            }
+        })
 
         viewModel.bannerDataState.observe(viewLifecycleOwner, { dataState ->
             when (dataState) {
