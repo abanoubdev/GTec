@@ -50,6 +50,10 @@ class MenuAdapter(
                             listener.onCategoryClicked(categoryId)
                         }
                     })
+            } else {
+                expandableItem.headerLayout.setOnClickListener {
+                    listener.onCategoryClicked(item.ClassificationID.toString())
+                }
             }
         }
     }
