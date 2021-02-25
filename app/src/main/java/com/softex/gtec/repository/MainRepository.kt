@@ -27,7 +27,7 @@ constructor(
 
         try {
             val user =
-                retrofitService.mobileLogin(
+                retrofitService.customerLogin(
                     BuildConfig.security_string,
                     BuildConfig.server_ip,
                     BuildConfig.database_name,
@@ -60,14 +60,14 @@ constructor(
 
     override suspend fun getElectronics(): Flow<DataState<List<NewArrivalsResponseItem>?>> = flow {
         emit(DataState.Loading)
-        val treeNodeID = "KiYqJCgjLWo5MDE5KCQzNCM0NSgqKQ=="
+        val treeNodeID = 19
 
         val electronics = retrofitService.getNewArrivals(
             BuildConfig.security_string,
             BuildConfig.server_ip,
             BuildConfig.database_name,
             BuildConfig.encrypted_ex_app_id,
-            treeNodeID
+            treeNodeID.toString().encrypt()
         )
 
         if (electronics != null && electronics.isNotEmpty()) {
@@ -79,34 +79,33 @@ constructor(
 
     override suspend fun getHomeAppliance(): Flow<DataState<List<NewArrivalsResponseItem>?>> = flow {
         emit(DataState.Loading)
-        val treeNodeID = "KiYqJCgjLWo5MDIwKCQzNCM0NSgqKQ=="
+        val treeNodeID = 20
 
         val electronics = retrofitService.getNewArrivals(
             BuildConfig.security_string,
             BuildConfig.server_ip,
             BuildConfig.database_name,
             BuildConfig.encrypted_ex_app_id,
-            treeNodeID
+            treeNodeID.toString().encrypt()
         )
 
         if (electronics != null && electronics.isNotEmpty()) {
             emit(DataState.Success(electronics))
         } else {
-            emit(DataState.Error(Exception("HomeAppliance is Empty")))
+            emit(DataState.Error(Exception("Home Appliance is Empty")))
         }
     }
 
     override suspend fun getBanners(): Flow<DataState<List<BannerResponseItem>?>> = flow {
         emit(DataState.Loading)
-
-        val treeNodeId = "KiYqJCgjLWo5MDMxKCQzNCM0NSgqKQ=="
+        val treeNodeId = 5
 
         val banners = retrofitService.getBanners(
             BuildConfig.security_string,
             BuildConfig.server_ip,
             BuildConfig.database_name,
             BuildConfig.encrypted_ex_app_id,
-            treeNodeId
+            treeNodeId.toString().encrypt()
         )
 
         if (banners != null && banners.isNotEmpty()) {
@@ -118,43 +117,39 @@ constructor(
 
     override suspend fun getMenuItems(): Flow<DataState<List<NavigationMenuResponseItem>?>> = flow {
         emit(DataState.Loading)
-
-        val classificationID = "KiYqJCgjLWo5MDIoJDM0IzQ1KCop"
+        val classificationID = 2
 
         val banners = retrofitService.getCategoriesWithClassification(
             BuildConfig.security_string,
             BuildConfig.server_ip,
             BuildConfig.database_name,
             BuildConfig.encrypted_ex_app_id,
-            classificationID
+            classificationID.toString().encrypt()
         )
 
         if (banners != null && banners.isNotEmpty()) {
             emit(DataState.Success(banners))
         } else {
-            emit(DataState.Error(Exception("MenuItems are empty")))
+            emit(DataState.Error(Exception("Menu Items are empty")))
         }
     }
 
-    override suspend fun getTopCategories(): Flow<DataState<List<TopCategoriesResponseItem>?>> =
-        flow {
-
+    override suspend fun getTopCategories(): Flow<DataState<List<TopCategoriesResponseItem>?>> = flow {
             emit(DataState.Loading)
-            //ToDo : to be changed later ,Ahmed told me to set it in request
-            val encryptedTreeNode = "KiYqJCgjLWo5MDE4KCQzNCM0NSgqKQ=="
+            val encryptedTreeNode = 18
 
             val topCategories = retrofitService.getTopCategories(
                 BuildConfig.security_string,
                 BuildConfig.server_ip,
                 BuildConfig.database_name,
                 BuildConfig.encrypted_ex_app_id,
-                encryptedTreeNode
+                encryptedTreeNode.toString().encrypt()
             )
 
             if (!topCategories.isNullOrEmpty()) {
                 emit(DataState.Success(topCategories))
             } else {
-                emit(DataState.Error(Exception("TopCategories are empty")))
+                emit(DataState.Error(Exception("Top Categories are empty")))
             }
         }
 }

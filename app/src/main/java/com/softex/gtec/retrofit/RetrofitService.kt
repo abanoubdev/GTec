@@ -10,18 +10,16 @@ import retrofit2.http.Query
 
 interface RetrofitService {
 
-    //Done
-    @GET("api/Account/MobileLogin")
-    suspend fun mobileLogin(
+    @GET("/api/Account/CustomerLogin")
+    suspend fun customerLogin(
         @Query("InputX.securityString") securityString: String,
         @Query("InputX.serverIP") serverIP: String,
         @Query("InputX.databaseName") databaseName: String,
         @Query("InputX.encryptedEXAppID") encryptedEXAppID: String,
-        @Query("InputX.encryptedPhone") encryptedPhone: String,
-        @Query("InputX.encryptedPassword") encryptedPassword: String
+        @Query("InputX.email") encryptedPhone: String,
+        @Query("InputX.encryptedUserPassword") encryptedPassword: String
     ): User?
 
-    //Done
     @GET("api/Main/GetCategoriesFeaturedImages")
     suspend fun getTopCategories(
         @Query("InputX.securityString") securityString: String,
@@ -31,7 +29,6 @@ interface RetrofitService {
         @Query("InputX.encryptedTreeNodeID") encryptedTreeNodeID: String,
     ): List<TopCategoriesResponseItem>?
 
-    //Done (Electronics & Home Appliance)
     @GET("api/Main/GetNewArrivals")
     suspend fun getNewArrivals(
         @Query("InputX.securityString") securityString: String,
@@ -41,7 +38,6 @@ interface RetrofitService {
         @Query("InputX.encryptedTreeNodeID") encryptedTreeNodeID: String,
     ): List<NewArrivalsResponseItem>?
 
-
     @GET("api/Main/GetBannerImgInfo")
     suspend fun getBanners(
         @Query("InputX.securityString") securityString: String,
@@ -50,7 +46,6 @@ interface RetrofitService {
         @Query("InputX.encryptedEXAppID") encryptedEXAppID: String,
         @Query("InputX.encryptedTreeNodeClassificationID") encryptedTreeNodeClassificationID: String,
     ): List<BannerResponseItem>?
-
 
     @GET("api/Shop/GetCategoriesWithClassification")
     suspend fun getCategoriesWithClassification(
