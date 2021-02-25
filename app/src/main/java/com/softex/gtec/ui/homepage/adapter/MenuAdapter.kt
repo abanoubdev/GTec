@@ -39,16 +39,18 @@ class MenuAdapter(
         fun bind(item: NavigationMenuResponseItem, listener: OnCategoryClickListener) {
             expandableItem.headerLayout.findViewById<TextView>(R.id.tvCategoryName).text =
                 item.ClassificationName
-            val expandedRecyclerView =
-                expandableItem.contentLayout.findViewById<RecyclerView>(R.id.recyclerExpandedItems)
-            expandedRecyclerView.layoutManager = LinearLayoutManager(itemView.context)
-            expandedRecyclerView.setHasFixedSize(true)
-            expandedRecyclerView.adapter =
-                ExpandedMenuAdapter(item.LstCategories, object : OnCategoryClickListener {
-                    override fun onCategoryClicked(categoryId: String) {
-                        listener.onCategoryClicked(categoryId)
-                    }
-                })
+            if (!item.LstCategories.isNullOrEmpty()) {
+                val expandedRecyclerView =
+                    expandableItem.contentLayout.findViewById<RecyclerView>(R.id.recyclerExpandedItems)
+                expandedRecyclerView.layoutManager = LinearLayoutManager(itemView.context)
+                expandedRecyclerView.setHasFixedSize(true)
+                expandedRecyclerView.adapter =
+                    ExpandedMenuAdapter(item.LstCategories, object : OnCategoryClickListener {
+                        override fun onCategoryClicked(categoryId: String) {
+                            listener.onCategoryClicked(categoryId)
+                        }
+                    })
+            }
         }
     }
 }
