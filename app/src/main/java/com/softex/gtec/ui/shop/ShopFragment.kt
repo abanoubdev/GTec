@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.softex.gtec.R
 import com.softex.gtec.databinding.ShopFragmentBinding
@@ -47,10 +48,15 @@ class ShopFragment : BaseFragment(R.layout.shop_fragment), View.OnClickListener,
             when (dataState) {
                 is DataState.Success<List<TopCategoriesResponseItem>?> -> {
                     displayLoadingDialog(false)
-                    _binding?.recyclerTopCategories?.layoutManager = LinearLayoutManager(context)
+                    _binding?.recyclerTopCategories?.layoutManager = LinearLayoutManager(
+                        context,
+                        LinearLayoutManager.HORIZONTAL, false
+                    )
+                    _binding?.recyclerTopCategories?.isNestedScrollingEnabled = true
+                    _binding?.recyclerTopCategories?.setHasFixedSize(true)
                     _binding?.recyclerTopCategories?.adapter = dataState.data?.let {
                         TopCategoriesAdapter(
-                            it,this@ShopFragment
+                            it, this@ShopFragment
                         )
                     }
 
@@ -73,10 +79,13 @@ class ShopFragment : BaseFragment(R.layout.shop_fragment), View.OnClickListener,
             when (dataState) {
                 is DataState.Success<List<BannerResponseItem>?> -> {
                     displayLoadingDialog(false)
-                    _binding?.recyclerBanners?.layoutManager = LinearLayoutManager(context)
+                    _binding?.recyclerBanners?.layoutManager = LinearLayoutManager(
+                        context,
+                        LinearLayoutManager.HORIZONTAL, false
+                    )
                     _binding?.recyclerBanners?.adapter = dataState.data?.let {
                         BannersAdapter(
-                            it,this@ShopFragment
+                            it, this@ShopFragment
                         )
                     }
                 }
@@ -113,24 +122,6 @@ class ShopFragment : BaseFragment(R.layout.shop_fragment), View.OnClickListener,
         viewModel.homeApplianceDataState.observe(viewLifecycleOwner, { dataState ->
             when (dataState) {
                 is DataState.Success<List<NewArrivalsResponseItem>?> -> {
-                    displayLoadingDialog(false)
-                    Log.d("newArrivals", dataState.data.toString())
-                }
-
-                is DataState.Error -> {
-                    displayLoadingDialog(false)
-                    Log.d("newArrivals", dataState.exception.toString())
-                }
-
-                is DataState.Loading -> {
-                    displayLoadingDialog(true)
-                }
-            }
-        })
-
-        viewModel.menuItemsDataState.observe(viewLifecycleOwner, { dataState ->
-            when (dataState) {
-                is DataState.Success<List<NavigationMenuResponseItem>?> -> {
                     displayLoadingDialog(false)
                     Log.d("newArrivals", dataState.data.toString())
                 }

@@ -5,6 +5,7 @@ import com.softex.gtec.model.featuredImages.BannerResponseItem
 import com.softex.gtec.model.menuItems.NavigationMenuResponseItem
 import com.softex.gtec.model.newArrivals.NewArrivalsResponseItem
 import com.softex.gtec.model.topCategories.TopCategoriesResponseItem
+import okhttp3.ResponseBody
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -16,7 +17,8 @@ interface RetrofitService {
         @Query("InputX.serverIP") serverIP: String,
         @Query("InputX.databaseName") databaseName: String,
         @Query("InputX.encryptedEXAppID") encryptedEXAppID: String,
-        @Query("InputX.email") encryptedPhone: String,
+        @Query("InputX.encryptedAppURL") encryptedAppURL: String,
+        @Query("InputX.email") email: String,
         @Query("InputX.encryptedUserPassword") encryptedPassword: String
     ): User?
 

@@ -31,12 +31,14 @@ android {
             def serverIP = "MC1.database.windows.net"
             def databaseName = "GTech_OnlineStore_MC"
             def encryptedEXAppID = "KiYqJCgjLWo5MDEoJDM0IzQ1KCop"
+            def encryptedAppURL = "https://webdev.softexservers.com/projects/laravel/stores/gtec/public/"
             def BASE_URL = "http://softex-mc-exapps-ws.azurewebsites.net/"
 
             buildConfigField "String", "security_string", "\"$securityString\""
             buildConfigField "String", "server_ip", "\"$serverIP\""
             buildConfigField "String", "database_name", "\"$databaseName\""
             buildConfigField "String", "encrypted_ex_app_id", "\"$encryptedEXAppID\""
+            buildConfigField "String", "encrypted_app_url", "\"$encryptedAppURL\""
             buildConfigField "String", "base_url", "\"$BASE_URL\""
         }
 
@@ -48,12 +50,14 @@ android {
             def serverIP = "MC1.database.windows.net"
             def databaseName = "GTech_OnlineStore_MC"
             def encryptedEXAppID = "KiYqJCgjLWo5MDEoJDM0IzQ1KCop"
+            def encryptedAppURL = "https://webdev.softexservers.com/projects/laravel/stores/gtec/public/"
             def BASE_URL = "http://softex-mc-exapps-ws.azurewebsites.net/"
 
             buildConfigField "String", "security_string", "\"$securityString\""
             buildConfigField "String", "server_ip", "\"$serverIP\""
             buildConfigField "String", "database_name", "\"$databaseName\""
             buildConfigField "String", "encrypted_ex_app_id", "\"$encryptedEXAppID\""
+            buildConfigField "String", "encrypted_app_url", "\"$encryptedAppURL\""
             buildConfigField "String", "base_url", "\"$BASE_URL\""
         }
     }

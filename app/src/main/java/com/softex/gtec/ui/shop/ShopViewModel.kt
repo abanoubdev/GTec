@@ -45,11 +45,6 @@ constructor(
     val bannerDataState: LiveData<DataState<List<BannerResponseItem>?>>
         get() = _bannerDataState
 
-    private val _menuItemsDataState: MutableLiveData<DataState<List<NavigationMenuResponseItem>?>> =
-        MutableLiveData()
-    val menuItemsDataState: LiveData<DataState<List<NavigationMenuResponseItem>?>>
-        get() = _menuItemsDataState
-
     fun setStateEvent(stateEvent: ShopStateEvent) {
         when (stateEvent) {
             ShopStateEvent.Shop -> {
@@ -73,11 +68,6 @@ constructor(
                     mainRepository.getBanners()
                         .onEach { dataState ->
                             _bannerDataState.value = dataState
-                        }.launchIn(viewModelScope)
-
-                    mainRepository.getMenuItems()
-                        .onEach { dataState ->
-                            _menuItemsDataState.value = dataState
                         }.launchIn(viewModelScope)
                 }
             }

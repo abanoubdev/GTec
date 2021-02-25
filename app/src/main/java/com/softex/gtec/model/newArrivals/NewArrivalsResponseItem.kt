@@ -8,8 +8,8 @@ data class NewArrivalsResponseItem(
     val ItemGroupName: String,
     val ItemID: Int,
     val ItemName: String,
-    val ItemPrice: Int,
-    val ItemPriceBeforeDiscount: Int,
+    val ItemPrice: Double,
+    val ItemPriceBeforeDiscount: Double,
     val ListFeaturedImages: List<FeaturedImages>,
     val ShortDescription: String
 ) {
@@ -42,12 +42,10 @@ data class NewArrivalsResponseItem(
         result = 31 * result + ItemGroupName.hashCode()
         result = 31 * result + ItemID
         result = 31 * result + ItemName.hashCode()
-        result = 31 * result + ItemPrice
-        result = 31 * result + ItemPriceBeforeDiscount
+        result = 31 * result + ItemPrice.hashCode()
+        result = 31 * result + ItemPriceBeforeDiscount.hashCode()
         result = 31 * result + ListFeaturedImages.hashCode()
         result = 31 * result + ShortDescription.hashCode()
         return result
     }
-
-
 }

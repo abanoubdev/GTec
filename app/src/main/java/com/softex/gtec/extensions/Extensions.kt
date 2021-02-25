@@ -37,17 +37,24 @@ fun Fragment.snackbarShort(exception: Exception?) {
     }
 }
 
-fun Fragment.startHomepage() {
-    val intent = Intent(requireActivity(), HomepageActivity::class.java)
-    startActivity(intent)
-    requireActivity().finish()
-}
-
 fun Fragment.snackbarLong(message: String?) {
     activity?.let {
         message?.let {
             Snackbar.make(this.requireView(), message, Snackbar.LENGTH_LONG).show()
         }
+    }
+}
+
+fun AppCompatActivity.snackbarShort(exception: Exception?) {
+    exception?.let {
+        Snackbar.make(findViewById(android.R.id.content), it.message!!, Snackbar.LENGTH_SHORT)
+            .show()
+    }
+}
+
+fun AppCompatActivity.snackbarLong(message: String?) {
+    message?.let {
+        Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG).show()
     }
 }
 
@@ -57,4 +64,10 @@ fun String.isEmpty(): Boolean {
 
 fun String.encrypt(): String {
     return SaltEncryption.encrypt(this)
+}
+
+fun Fragment.startHomepage() {
+    val intent = Intent(requireActivity(), HomepageActivity::class.java)
+    startActivity(intent)
+    requireActivity().finish()
 }

@@ -32,6 +32,7 @@ constructor(
                     BuildConfig.server_ip,
                     BuildConfig.database_name,
                     BuildConfig.encrypted_ex_app_id,
+                    BuildConfig.encrypted_app_url.encrypt(),
                     username,
                     password.encrypt()
                 )
@@ -77,24 +78,25 @@ constructor(
         }
     }
 
-    override suspend fun getHomeAppliance(): Flow<DataState<List<NewArrivalsResponseItem>?>> = flow {
-        emit(DataState.Loading)
-        val treeNodeID = 20
+    override suspend fun getHomeAppliance(): Flow<DataState<List<NewArrivalsResponseItem>?>> =
+        flow {
+            emit(DataState.Loading)
+            val treeNodeID = 20
 
-        val electronics = retrofitService.getNewArrivals(
-            BuildConfig.security_string,
-            BuildConfig.server_ip,
-            BuildConfig.database_name,
-            BuildConfig.encrypted_ex_app_id,
-            treeNodeID.toString().encrypt()
-        )
+            val electronics = retrofitService.getNewArrivals(
+                BuildConfig.security_string,
+                BuildConfig.server_ip,
+                BuildConfig.database_name,
+                BuildConfig.encrypted_ex_app_id,
+                treeNodeID.toString().encrypt()
+            )
 
-        if (electronics != null && electronics.isNotEmpty()) {
-            emit(DataState.Success(electronics))
-        } else {
-            emit(DataState.Error(Exception("Home Appliance is Empty")))
+            if (electronics != null && electronics.isNotEmpty()) {
+                emit(DataState.Success(electronics))
+            } else {
+                emit(DataState.Error(Exception("Home Appliance is Empty")))
+            }
         }
-    }
 
     override suspend fun getBanners(): Flow<DataState<List<BannerResponseItem>?>> = flow {
         emit(DataState.Loading)
@@ -134,7 +136,8 @@ constructor(
         }
     }
 
-    override suspend fun getTopCategories(): Flow<DataState<List<TopCategoriesResponseItem>?>> = flow {
+    override suspend fun getTopCategories(): Flow<DataState<List<TopCategoriesResponseItem>?>> =
+        flow {
             emit(DataState.Loading)
             val encryptedTreeNode = 18
 

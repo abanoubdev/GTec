@@ -29,13 +29,15 @@ class SplashFragment : BaseFragment(R.layout.fragment_splash) {
             when (dataState) {
                 is DataState.Success<User?> -> {
                     Handler(Looper.getMainLooper()).postDelayed({
-                        if (dataState.data != null) {
-                            startHomepage()
-                        } else {
-                            findNavController(
-                                requireActivity(),
-                                R.id.nav_host_fragment
-                            ).navigate(R.id.action_splashFragment_to_loginFragment)
+                        activity?.let {
+                            if (dataState.data != null) {
+                                startHomepage()
+                            } else {
+                                findNavController(
+                                    requireActivity(),
+                                    R.id.nav_host_fragment
+                                ).navigate(R.id.action_splashFragment_to_loginFragment)
+                            }
                         }
                     }, 2000)
                 }
