@@ -58,6 +58,8 @@ class HomepageActivity : AppCompatActivity(), OnCategoryClickListener {
                 is DataState.Success<User?> -> {
                     tvNavigationUsername.text = dataState.data?.CustomerName
                     tvNavigationEmail.text = dataState.data?.CustomerName
+                    val tvUsername = findViewById<TextView>(R.id.tvUsername)
+                    tvUsername.text = dataState.data?.CustomerName
                 }
                 else -> {
 

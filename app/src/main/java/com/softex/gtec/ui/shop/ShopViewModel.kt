@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.softex.gtec.model.User
 import com.softex.gtec.model.featuredImages.BannerResponseItem
 import com.softex.gtec.model.menuItems.NavigationMenuResponseItem
 import com.softex.gtec.model.newArrivals.NewArrivalsResponseItem
@@ -41,7 +42,8 @@ constructor(
     val topCategoriesDataState: LiveData<DataState<List<TopCategoriesResponseItem>?>?>
         get() = _topCategoriesDataState
 
-    private val _bannerDataState: MutableLiveData<DataState<List<BannerResponseItem>?>> = MutableLiveData()
+    private val _bannerDataState: MutableLiveData<DataState<List<BannerResponseItem>?>> =
+        MutableLiveData()
     val bannerDataState: LiveData<DataState<List<BannerResponseItem>?>>
         get() = _bannerDataState
 
