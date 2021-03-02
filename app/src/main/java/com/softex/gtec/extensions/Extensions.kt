@@ -3,6 +3,7 @@ package com.softex.gtec.extensions
 import android.content.Intent
 import android.text.TextUtils
 import android.util.Log
+import android.util.Patterns
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
@@ -81,3 +82,5 @@ fun AppCompatActivity.startSplash() {
     startActivity(intent)
     finish()
 }
+
+fun CharSequence?.isValidEmail() = !isNullOrEmpty() && Patterns.EMAIL_ADDRESS.matcher(this).matches()

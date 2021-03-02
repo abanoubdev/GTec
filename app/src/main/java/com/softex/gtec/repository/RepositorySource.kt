@@ -12,6 +12,12 @@ interface RepositorySource {
 
     suspend fun login(username: String, password: String): Flow<DataState<User?>>
 
+    suspend fun register(
+        name: String,
+        usernameOrEmail: String,
+        password: String
+    ): Flow<DataState<Int?>>
+
     suspend fun getCachedUser(): Flow<DataState<User?>>
 
     suspend fun getTopCategories(): Flow<DataState<List<TopCategoriesResponseItem>?>>

@@ -2,6 +2,7 @@ package com.softex.gtec.repository
 
 import com.softex.gtec.BuildConfig
 import com.softex.gtec.extensions.encrypt
+import com.softex.gtec.model.RegisterRequest
 import com.softex.gtec.model.User
 import com.softex.gtec.model.featuredImages.BannerResponseItem
 import com.softex.gtec.model.menuItems.NavigationMenuResponseItem
@@ -11,6 +12,7 @@ import com.softex.gtec.retrofit.RetrofitService
 import com.softex.gtec.room.UserDao
 import com.softex.gtec.util.DataState
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
@@ -26,25 +28,32 @@ constructor(
         emit(DataState.Loading)
 
         try {
-            val user =
-                retrofitService.customerLogin(
-                    BuildConfig.security_string,
-                    BuildConfig.server_ip,
-                    BuildConfig.database_name,
-                    BuildConfig.encrypted_ex_app_id,
-                    BuildConfig.encrypted_app_url.encrypt(),
-                    username,
-                    password.encrypt()
-                )
-
-            if (user?.CustomerID != null) {
-                userDao.insert(user)
-                emit(DataState.Success(user))
-            } else {
-                emit(DataState.Error(Exception()))
-            }
+            doLogin(username, password)
         } catch (e: Exception) {
             emit(DataState.Error(e))
+        }
+    }
+
+    private suspend fun FlowCollector<DataState<User>>.doLogin(
+        username: String,
+        password: String
+    ) {
+        val user =
+            retrofitService.customerLogin(
+                BuildConfig.security_string,
+                BuildConfig.server_ip,
+                BuildConfig.database_name,
+                BuildConfig.encrypted_ex_app_id,
+                BuildConfig.encrypted_app_url.encrypt(),
+                username,
+                password.encrypt()
+            )
+
+        if (user?.CustomerID != null) {
+            userDao.insert(user)
+            emit(DataState.Success(user))
+        } else {
+            emit(DataState.Error(Exception()))
         }
     }
 
@@ -174,4 +183,40 @@ constructor(
     override suspend fun reset() {
         userDao.deleteAll()
     }
+
+    override suspend fun register(
+        name: String,
+        usernameOrEmail: String,
+        password: String
+    ): Flow<DataState<Int?>> =
+        flow {
+            emit(DataState.Loading)
+
+            val registerRequest = RegisterRequest(
+                0,
+                0,
+                name,
+                "SoftexDemo",
+                usernameOrEmail,
+                BuildConfig.encrypted_app_url,
+                "KiYqJCgjLWo5MDE2KCQzNCM0NSgqKQ==",
+                password.encrypt(),
+                "104.243.33.149",
+                "wpKr&\$NDagoDhFNFI\$(O",
+                "104.243.33.149",
+                ""
+            )
+
+            when (retrofitService.register(registerRequest)) {
+                2 -> {
+                    emit(DataState.Error(Exception("Account Already Exists")))
+                }
+                1 -> {
+                    emit(DataState.Success(1))
+                }
+                else -> {
+                    emit(DataState.Error(Exception("Error Creating Account")))
+                }
+            }
+        }
 }

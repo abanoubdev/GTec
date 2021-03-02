@@ -37,4 +37,6 @@
     <string name="already_have_account">Already have an account?</string>
     <string name="logout">Log Out</string>
     <string name="title_orders">Orders</string>
+    <string name="invalid_name">Invalid Name</string>
+    <string name="account_created_success">User Account Created</string>
 </resources>

@@ -1,11 +1,14 @@
 package com.softex.gtec.retrofit
 
+import com.softex.gtec.model.RegisterRequest
 import com.softex.gtec.model.User
 import com.softex.gtec.model.featuredImages.BannerResponseItem
 import com.softex.gtec.model.menuItems.NavigationMenuResponseItem
 import com.softex.gtec.model.newArrivals.NewArrivalsResponseItem
 import com.softex.gtec.model.topCategories.TopCategoriesResponseItem
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface RetrofitService {
@@ -20,6 +23,11 @@ interface RetrofitService {
         @Query("InputX.email") email: String,
         @Query("InputX.encryptedUserPassword") encryptedPassword: String
     ): User?
+
+    @POST("/api/Account/RegisterNewCustomer")
+    suspend fun register(
+        @Body registerRequest: RegisterRequest
+    ): Int?
 
     @GET("api/Main/GetCategoriesFeaturedImages")
     suspend fun getTopCategories(
