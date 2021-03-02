@@ -10,7 +10,6 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @AndroidEntryPoint
 class MyAccountFragment : BaseFragment(R.layout.my_account_fragment) {
 
-
     override fun initViews() {
     }
 
