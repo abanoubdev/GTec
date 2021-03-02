@@ -297,6 +297,6 @@
             android:textStyle="normal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintData"
-            tools:text="Log Out" />
+            android:text="@string/logout" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
