@@ -55,4 +55,12 @@ constructor(
             }.launchIn(viewModelScope)
         }
     }
+
+    fun reset() {
+        viewModelScope.launch {
+            mainRepository.getCachedUser().onEach { dataState ->
+                mainRepository.reset()
+            }.launchIn(viewModelScope)
+        }
+    }
 }

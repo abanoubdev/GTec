@@ -23,4 +23,6 @@ interface RepositorySource {
     suspend fun getBanners(): Flow<DataState<List<BannerResponseItem>?>>
 
     suspend fun getMenuItems(): Flow<DataState<List<NavigationMenuResponseItem>?>>
+
+    suspend fun reset()
 }

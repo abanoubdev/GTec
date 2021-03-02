@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.softex.gtec.R
 import com.softex.gtec.databinding.ActivityHomepageBinding
 import com.softex.gtec.extensions.snackbarShort
+import com.softex.gtec.extensions.startSplash
 import com.softex.gtec.model.User
 import com.softex.gtec.model.menuItems.NavigationMenuResponseItem
 import com.softex.gtec.ui.homepage.adapter.MenuAdapter
@@ -29,7 +30,7 @@ class HomepageActivity : AppCompatActivity(), OnCategoryClickListener {
 
     private lateinit var binding: ActivityHomepageBinding
 
-    private val viewModel: HomepageViewModel by viewModels()
+    private val homepageViewModel: HomepageViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,11 +47,11 @@ class HomepageActivity : AppCompatActivity(), OnCategoryClickListener {
 
         subscribeObservers()
 
-        viewModel.setStateEvent(HomepageStateEvent.GetData)
+        homepageViewModel.setStateEvent(HomepageStateEvent.GetData)
     }
 
     private fun subscribeObservers() {
-        viewModel.dataState.observe(this, { dataState ->
+        homepageViewModel.dataState.observe(this, { dataState ->
             val tvNavigationUsername = findViewById<TextView>(R.id.tvNavigationUsername)
             val tvNavigationEmail = findViewById<TextView>(R.id.tvNavigationEmail)
 
@@ -67,7 +68,7 @@ class HomepageActivity : AppCompatActivity(), OnCategoryClickListener {
             }
         })
 
-        viewModel.menuItemsDataState.observe(this, { dataState ->
+        homepageViewModel.menuItemsDataState.observe(this, { dataState ->
             when (dataState) {
                 is DataState.Success<List<NavigationMenuResponseItem>?> -> {
                     val recyclerMenu = findViewById<RecyclerView>(R.id.recyclerMenuItems)
@@ -95,6 +96,7 @@ class HomepageActivity : AppCompatActivity(), OnCategoryClickListener {
         val ivMenu = findViewById<ImageView>(R.id.ivMenu)
         val ivBack = findViewById<ImageView>(R.id.ivBack)
         val ivLogoHeader = findViewById<ImageView>(R.id.ivLogo)
+        val tvLogout = findViewById<TextView>(R.id.tvLogout)
         ivMenu.setOnClickListener {
             openDrawer()
         }
@@ -103,6 +105,10 @@ class HomepageActivity : AppCompatActivity(), OnCategoryClickListener {
         }
         ivBack.setOnClickListener {
             closeDrawer()
+        }
+        tvLogout.setOnClickListener {
+            homepageViewModel.reset()
+            startSplash()
         }
     }
 

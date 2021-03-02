@@ -13,6 +13,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.onNavDestinationSelected
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
+import com.softex.gtec.ui.MainActivity
 import com.softex.gtec.ui.homepage.HomepageActivity
 import com.softex.gtec.util.SaltEncryption
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -72,4 +73,11 @@ fun Fragment.startHomepage() {
     val intent = Intent(requireActivity(), HomepageActivity::class.java)
     startActivity(intent)
     requireActivity().finish()
+}
+
+@ExperimentalCoroutinesApi
+fun AppCompatActivity.startSplash() {
+    val intent = Intent(this, MainActivity::class.java)
+    startActivity(intent)
+    finish()
 }

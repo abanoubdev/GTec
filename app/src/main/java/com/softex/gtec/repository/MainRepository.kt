@@ -118,6 +118,7 @@ constructor(
         )
 
         val totalBanners = ArrayList<BannerResponseItem>()
+
         if (banners != null)
             totalBanners.addAll(banners)
         if (banners2 != null)
@@ -168,4 +169,9 @@ constructor(
                 emit(DataState.Error(Exception("Top Categories are empty")))
             }
         }
+
+
+    override suspend fun reset() {
+        userDao.deleteAll()
+    }
 }
