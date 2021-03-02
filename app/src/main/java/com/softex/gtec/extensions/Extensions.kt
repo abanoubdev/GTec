@@ -15,6 +15,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.softex.gtec.ui.homepage.HomepageActivity
 import com.softex.gtec.util.SaltEncryption
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import java.lang.Exception
 
 fun log(tag: String, message: String) {
@@ -66,6 +67,7 @@ fun String.encrypt(): String {
     return SaltEncryption.encrypt(this)
 }
 
+@ExperimentalCoroutinesApi
 fun Fragment.startHomepage() {
     val intent = Intent(requireActivity(), HomepageActivity::class.java)
     startActivity(intent)

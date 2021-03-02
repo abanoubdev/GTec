@@ -5,7 +5,6 @@ import com.softex.gtec.model.featuredImages.BannerResponseItem
 import com.softex.gtec.model.menuItems.NavigationMenuResponseItem
 import com.softex.gtec.model.newArrivals.NewArrivalsResponseItem
 import com.softex.gtec.model.topCategories.TopCategoriesResponseItem
-import okhttp3.ResponseBody
 import retrofit2.http.GET
 import retrofit2.http.Query
 

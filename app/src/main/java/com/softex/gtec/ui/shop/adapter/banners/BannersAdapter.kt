@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.softex.gtec.R
 import com.softex.gtec.model.featuredImages.BannerResponseItem
-import com.softex.gtec.util.BannerUrlDriller
+import com.softex.gtec.util.ImageUrlDriller
 
 class BannersAdapter(
     val items: List<BannerResponseItem>,
@@ -38,7 +38,7 @@ class BannersAdapter(
             with(itemView) {
                 setOnClickListener { listener(item) }
                 val url =
-                    BannerUrlDriller.formatBannerImageURL(item.FileID.toString())
+                    ImageUrlDriller.formatImageURL(item.FileID.toString())
                 Glide
                     .with(itemView.context)
                     .load(url)

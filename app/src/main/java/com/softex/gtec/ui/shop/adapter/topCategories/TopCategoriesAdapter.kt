@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.softex.gtec.R
@@ -33,17 +34,21 @@ class TopCategoriesAdapter(
     class TopCategoriesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         private val topCategoriesIcon: ImageView = itemView.findViewById(R.id.topCategoriesIcon)
+        private val topCategoriesName: TextView = itemView.findViewById(R.id.topCategoriesName)
 
         fun bind(item: TopCategoriesResponseItem, listener: (TopCategoriesResponseItem) -> Unit) =
             with(itemView) {
                 setOnClickListener { listener(item) }
-                val url =
-                    ImageUrlDriller.formatImageURL(item.ListFeaturedImages[0].FileID.toString())
-                Glide
-                    .with(itemView.context)
-                    .load(url)
-                    .centerCrop()
-                    .into(topCategoriesIcon)
+                if (item.ListFeaturedImages.isNotEmpty()) {
+                    val url =
+                        ImageUrlDriller.formatImageURL(item.ListFeaturedImages[0].FileID.toString())
+                    Glide
+                        .with(itemView.context)
+                        .load(url)
+                        .centerCrop()
+                        .into(topCategoriesIcon)
+                }
+                topCategoriesName.text = item.CategoryName
             }
     }
 

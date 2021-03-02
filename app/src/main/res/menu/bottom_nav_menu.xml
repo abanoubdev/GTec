@@ -12,10 +12,6 @@
         android:title="@string/my_account" />
 
     <item
-        android:id="@+id/placeholder"
-        android:title="" />
-
-    <item
         android:id="@+id/navigation_offers"
         android:icon="@mipmap/offers"
         android:title="@string/offers" />

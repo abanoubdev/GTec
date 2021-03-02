@@ -67,6 +67,7 @@ constructor(
                             _homeApplianceDataState.value = dataState
                         }.launchIn(viewModelScope)
 
+                    //4,5
                     mainRepository.getBanners()
                         .onEach { dataState ->
                             _bannerDataState.value = dataState

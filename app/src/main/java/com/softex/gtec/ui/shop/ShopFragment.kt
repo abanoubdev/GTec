@@ -6,17 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.softex.gtec.R
 import com.softex.gtec.databinding.ShopFragmentBinding
-import com.softex.gtec.model.User
 import com.softex.gtec.model.featuredImages.BannerResponseItem
-import com.softex.gtec.model.menuItems.NavigationMenuResponseItem
 import com.softex.gtec.model.newArrivals.NewArrivalsResponseItem
 import com.softex.gtec.model.topCategories.TopCategoriesResponseItem
 import com.softex.gtec.ui.BaseFragment
 import com.softex.gtec.ui.shop.adapter.banners.BannersAdapter
+import com.softex.gtec.ui.shop.adapter.electronics.ElectronicsAdapter
 import com.softex.gtec.ui.shop.adapter.topCategories.TopCategoriesAdapter
 import com.softex.gtec.util.DataState
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,7 +23,8 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @ExperimentalCoroutinesApi
 @AndroidEntryPoint
 class ShopFragment : BaseFragment(R.layout.shop_fragment), View.OnClickListener,
-    TopCategoriesAdapter.TopCategoriesItemClickListener, BannersAdapter.BannerItemClickListener {
+    TopCategoriesAdapter.TopCategoriesItemClickListener, BannersAdapter.BannerItemClickListener,
+    ElectronicsAdapter.ElectronicsItemClickListener {
 
     private var _binding: ShopFragmentBinding? = null
 
@@ -106,7 +105,15 @@ class ShopFragment : BaseFragment(R.layout.shop_fragment), View.OnClickListener,
             when (dataState) {
                 is DataState.Success<List<NewArrivalsResponseItem>?> -> {
                     displayLoadingDialog(false)
-                    Log.d("newArrivals", dataState.data.toString())
+                    _binding?.recyclerElectronics?.layoutManager = LinearLayoutManager(
+                        context,
+                        LinearLayoutManager.HORIZONTAL, false
+                    )
+                    _binding?.recyclerElectronics?.adapter = dataState.data?.let {
+                        ElectronicsAdapter(
+                            it, this@ShopFragment
+                        )
+                    }
                 }
 
                 is DataState.Error -> {
@@ -124,7 +131,15 @@ class ShopFragment : BaseFragment(R.layout.shop_fragment), View.OnClickListener,
             when (dataState) {
                 is DataState.Success<List<NewArrivalsResponseItem>?> -> {
                     displayLoadingDialog(false)
-                    Log.d("newArrivals", dataState.data.toString())
+                    _binding?.recyclerHomeAppliance?.layoutManager = LinearLayoutManager(
+                        context,
+                        LinearLayoutManager.HORIZONTAL, false
+                    )
+                    _binding?.recyclerHomeAppliance?.adapter = dataState.data?.let {
+                        ElectronicsAdapter(
+                            it, this@ShopFragment
+                        )
+                    }
                 }
 
                 is DataState.Error -> {
@@ -153,5 +168,9 @@ class ShopFragment : BaseFragment(R.layout.shop_fragment), View.OnClickListener,
     }
 
     override fun onBannerItemClicked(item: BannerResponseItem) {
+    }
+
+    override fun onTopCategoryItemCLicked(item: NewArrivalsResponseItem) {
+
     }
 }

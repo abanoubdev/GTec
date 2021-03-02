@@ -100,18 +100,31 @@ constructor(
 
     override suspend fun getBanners(): Flow<DataState<List<BannerResponseItem>?>> = flow {
         emit(DataState.Loading)
-        val treeNodeId = 5
 
         val banners = retrofitService.getBanners(
             BuildConfig.security_string,
             BuildConfig.server_ip,
             BuildConfig.database_name,
             BuildConfig.encrypted_ex_app_id,
-            treeNodeId.toString().encrypt()
+            4.toString().encrypt()
         )
 
-        if (banners != null && banners.isNotEmpty()) {
-            emit(DataState.Success(banners))
+        val banners2 = retrofitService.getBanners(
+            BuildConfig.security_string,
+            BuildConfig.server_ip,
+            BuildConfig.database_name,
+            BuildConfig.encrypted_ex_app_id,
+            5.toString().encrypt()
+        )
+
+        val totalBanners = ArrayList<BannerResponseItem>()
+        if (banners != null)
+            totalBanners.addAll(banners)
+        if (banners2 != null)
+            totalBanners.addAll(banners2)
+
+        if (totalBanners.isNotEmpty()) {
+            emit(DataState.Success(totalBanners))
         } else {
             emit(DataState.Error(Exception("Banners are empty")))
         }
