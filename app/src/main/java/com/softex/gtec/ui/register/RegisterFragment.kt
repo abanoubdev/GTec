@@ -15,6 +15,7 @@ import com.softex.gtec.util.DataState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
+
 @ExperimentalCoroutinesApi
 @AndroidEntryPoint
 class RegisterFragment : BaseFragment(R.layout.fragment_register) {

@@ -1,5 +1,6 @@
 package com.softex.gtec.repository
 
+import android.text.format.Formatter
 import com.softex.gtec.BuildConfig
 import com.softex.gtec.extensions.encrypt
 import com.softex.gtec.model.RegisterRequest
@@ -14,7 +15,10 @@ import com.softex.gtec.util.DataState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.flow.flow
+import java.net.NetworkInterface
+import java.net.SocketException
 import javax.inject.Inject
+
 
 class MainRepository
 @Inject
@@ -198,10 +202,10 @@ constructor(
                 name,
                 "SoftexDemo",
                 usernameOrEmail,
-                BuildConfig.encrypted_app_url,
+                BuildConfig.encrypted_app_url.encrypt(),
                 "KiYqJCgjLWo5MDE2KCQzNCM0NSgqKQ==",
                 password.encrypt(),
-                "104.243.33.149",
+                getLocalIpAddress(),
                 "wpKr&\$NDagoDhFNFI\$(O",
                 "104.243.33.149",
                 ""
@@ -219,4 +223,24 @@ constructor(
                 }
             }
         }
+
+
+    private fun getLocalIpAddress(): String {
+        try {
+            val en = NetworkInterface.getNetworkInterfaces()
+            while (en.hasMoreElements()) {
+                val intf = en.nextElement()
+                val enumIpAddr = intf.inetAddresses
+                while (enumIpAddr.hasMoreElements()) {
+                    val inetAddress = enumIpAddr.nextElement()
+                    if (!inetAddress.isLoopbackAddress) {
+                        val ip: String = Formatter.formatIpAddress(inetAddress.hashCode())
+                        return ip
+                    }
+                }
+            }
+        } catch (ex: SocketException) {
+        }
+        return ""
+    }
 }

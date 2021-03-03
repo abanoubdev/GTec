@@ -1,24 +1,22 @@
 package com.softex.gtec.extensions
 
+import android.content.Context.WIFI_SERVICE
 import android.content.Intent
+import android.net.wifi.WifiManager
 import android.text.TextUtils
+import android.text.format.Formatter.formatIpAddress
 import android.util.Log
 import android.util.Patterns
 import androidx.appcompat.app.AppCompatActivity
-import androidx.drawerlayout.widget.DrawerLayout
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.onNavDestinationSelected
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.softex.gtec.ui.MainActivity
 import com.softex.gtec.ui.homepage.HomepageActivity
 import com.softex.gtec.util.SaltEncryption
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import java.lang.Exception
+
 
 fun log(tag: String, message: String) {
     Log.d(tag, message)
