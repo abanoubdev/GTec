@@ -184,7 +184,7 @@ constructor(
         if (countries != null) {
             for (country in countries) {
                 val filteredCities = cities?.filter {
-                    it.CountryID.equals(country.ID)
+                    it.CountryID == country.ID
                 }
                 if (filteredCities != null && filteredCities.isNotEmpty())
                     country.cities = filteredCities.toMutableList()
