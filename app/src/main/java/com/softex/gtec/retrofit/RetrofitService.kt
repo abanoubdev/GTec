@@ -1,5 +1,7 @@
 package com.softex.gtec.retrofit
 
+import com.softex.gtec.model.City
+import com.softex.gtec.model.Country
 import com.softex.gtec.model.RegisterRequest
 import com.softex.gtec.model.User
 import com.softex.gtec.model.featuredImages.BannerResponseItem
@@ -64,4 +66,20 @@ interface RetrofitService {
         @Query("InputX.encryptedEXAppID") encryptedEXAppID: String,
         @Query("InputX.encryptedClassificationID") encryptedClassificationID: String,
     ): List<NavigationMenuResponseItem>?
+
+    @GET("api/General/GetCountries")
+    suspend fun getCountries(
+        @Query("InputX.securityString") securityString: String,
+        @Query("InputX.serverIP") serverIP: String,
+        @Query("InputX.databaseName") databaseName: String,
+        @Query("InputX.encryptedEXAppID") encryptedEXAppID: String
+    ): List<Country>?
+
+    @GET("api/General/GetCities")
+    suspend fun getCities(
+        @Query("InputX.securityString") securityString: String,
+        @Query("InputX.serverIP") serverIP: String,
+        @Query("InputX.databaseName") databaseName: String,
+        @Query("InputX.encryptedEXAppID") encryptedEXAppID: String
+    ): List<City>?
 }

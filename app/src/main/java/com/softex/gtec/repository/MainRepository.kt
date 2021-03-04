@@ -3,6 +3,7 @@ package com.softex.gtec.repository
 import android.text.format.Formatter
 import com.softex.gtec.BuildConfig
 import com.softex.gtec.extensions.encrypt
+import com.softex.gtec.model.Country
 import com.softex.gtec.model.RegisterRequest
 import com.softex.gtec.model.User
 import com.softex.gtec.model.featuredImages.BannerResponseItem
@@ -160,6 +161,37 @@ constructor(
             emit(DataState.Success(banners))
         } else {
             emit(DataState.Error(Exception("Menu Items are empty")))
+        }
+    }
+
+    override suspend fun getCountriesWithCities(): Flow<DataState<List<Country>?>> = flow {
+        emit(DataState.Loading)
+
+        val countries = retrofitService.getCountries(
+            BuildConfig.security_string,
+            BuildConfig.server_ip,
+            BuildConfig.database_name,
+            BuildConfig.encrypted_ex_app_id
+        )
+
+        val cities = retrofitService.getCities(
+            BuildConfig.security_string,
+            BuildConfig.server_ip,
+            BuildConfig.database_name,
+            BuildConfig.encrypted_ex_app_id
+        )
+
+        if (countries != null) {
+            for (country in countries) {
+                val filteredCities = cities?.filter {
+                    it.CountryID.equals(country.ID)
+                }
+                if (filteredCities != null && filteredCities.isNotEmpty())
+                    country.cities = filteredCities.toMutableList()
+            }
+            emit(DataState.Success(countries))
+        } else {
+            emit(DataState.Error(Exception("Countries are empty")))
         }
     }
 

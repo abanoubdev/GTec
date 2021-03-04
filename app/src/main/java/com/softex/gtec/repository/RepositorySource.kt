@@ -1,5 +1,6 @@
 package com.softex.gtec.repository
 
+import com.softex.gtec.model.Country
 import com.softex.gtec.model.User
 import com.softex.gtec.model.featuredImages.BannerResponseItem
 import com.softex.gtec.model.menuItems.NavigationMenuResponseItem
@@ -29,6 +30,8 @@ interface RepositorySource {
     suspend fun getBanners(): Flow<DataState<List<BannerResponseItem>?>>
 
     suspend fun getMenuItems(): Flow<DataState<List<NavigationMenuResponseItem>?>>
+
+    suspend fun getCountriesWithCities(): Flow<DataState<List<Country>?>>
 
     suspend fun reset()
 }
