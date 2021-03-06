@@ -186,7 +186,7 @@ constructor(
                 val filteredCities = cities?.filter {
                     it.CountryID == country.ID
                 }
-                if (filteredCities != null && filteredCities.isNotEmpty())
+                if (!filteredCities.isNullOrEmpty())
                     country.cities = filteredCities.toMutableList()
             }
             emit(DataState.Success(countries))
@@ -261,8 +261,7 @@ constructor(
         try {
             val en = NetworkInterface.getNetworkInterfaces()
             while (en.hasMoreElements()) {
-                val intf = en.nextElement()
-                val enumIpAddr = intf.inetAddresses
+                val enumIpAddr = en.nextElement().inetAddresses
                 while (enumIpAddr.hasMoreElements()) {
                     val inetAddress = enumIpAddr.nextElement()
                     if (!inetAddress.isLoopbackAddress) {
