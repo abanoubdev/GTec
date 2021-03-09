@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/layout/electronics_row_item.xml" value="0.16084093211752787" />
         <entry key="app/src/main/res/layout/fragment_register.xml" value="0.16058763931104356" />
+        <entry key="app/src/main/res/layout/fragment_register_fields.xml" value="0.335" />
       </map>
     </option>
   </component>

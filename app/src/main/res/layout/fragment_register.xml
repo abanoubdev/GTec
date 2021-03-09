@@ -17,200 +17,21 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="ContentDescription" />
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/poppins"
-        android:gravity="center_horizontal"
-        android:lineSpacingExtra="10sp"
-        android:textColor="@color/black_two"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        tools:text="Getting Started" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/poppins_light"
-        android:gravity="center_horizontal"
-        android:lineSpacingExtra="7sp"
-        android:textColor="#404040"
-        android:textSize="13sp"
-        android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
-        tools:text="Create an account to continued" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/poppins_light"
-        android:lineSpacingExtra="8sp"
-        android:text="@string/your_name"
-        android:textColor="@color/warm_grey"
-        android:textSize="15sp"
-        android:textStyle="normal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
-    <EditText
-        android:id="@+id/etName"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="20dp"
-        android:drawableStart="@mipmap/user"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        android:fontFamily="@font/poppins_medium"
-        android:hint="@string/your_name"
-        android:imeOptions="actionNext"
-        android:inputType="textPersonName"
-        android:textColor="@color/black_three"
-        android:textColorHint="@color/cool_grey"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8"
-        tools:ignore="Autofill" />
-
-    <TextView
-        android:id="@+id/emailLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="28dp"
-        android:fontFamily="@font/poppins_light"
-        android:lineSpacingExtra="8sp"
-        android:textColor="@color/warm_grey"
-        android:textSize="15sp"
-        android:textStyle="normal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etName"
-        tools:text="E-Mail" />
-
-    <EditText
-        android:id="@+id/etUsernameOrEmail"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="20dp"
-        android:drawableStart="@mipmap/mail"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        android:fontFamily="@font/poppins_medium"
-        android:hint="@string/username_or_email"
-        android:imeOptions="actionNext"
-        android:inputType="textEmailAddress"
-        android:textColor="@color/black_three"
-        android:textColorHint="@color/cool_grey"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailLabel"
-        tools:ignore="Autofill" />
-
-
-    <TextView
-        android:id="@+id/passwordLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:fontFamily="@font/poppins_light"
-        android:lineSpacingExtra="8sp"
-        android:text="@string/password"
-        android:textColor="@color/warm_grey"
-        android:textSize="15sp"
-        android:textStyle="normal"
-        app:layout_constraintStart_toStartOf="@+id/emailLabel"
-        app:layout_constraintTop_toBottomOf="@+id/etUsernameOrEmail" />
-
-
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="20dp"
-        android:drawableStart="@mipmap/lock"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        android:fontFamily="@font/poppins_medium"
-        android:hint="@string/password"
-        android:imeOptions="actionDone"
-        android:inputType="textPassword"
-        android:paddingStart="0dp"
-        android:paddingEnd="20dp"
-        android:textColor="@color/black_three"
-        android:textColorHint="@color/cool_grey"
-        android:textSize="15sp"
-        app:layout_constraintTop_toBottomOf="@+id/passwordLabel"
-        tools:ignore="Autofill" />
-
-    <Button
-        android:id="@+id/signUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/login_bg"
-        android:fontFamily="@font/poppins_light"
-        android:lineSpacingExtra="9sp"
-        android:text="@string/sign_up"
-        android:textAllCaps="false"
-        android:textColor="@color/white_two"
-        android:textSize="17sp"
-        android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword" />
-
-    <TextView
-        android:id="@+id/signIn1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:fontFamily="@font/poppins_light"
-        android:gravity="center_horizontal"
-        android:lineSpacingExtra="8sp"
-        android:text="@string/already_have_account"
-        android:textColor="@color/black_four"
-        android:textSize="15sp"
-        android:textStyle="normal"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.378"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2">
 
-    <TextView
-        android:id="@+id/signIn2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:fontFamily="@font/poppins_bold"
-        android:gravity="center_horizontal"
-        android:lineSpacingExtra="8sp"
-        android:text="@string/sign_in"
-        android:textColor="@color/cerulean"
-        android:textSize="15sp"
-        android:textStyle="normal"
-        app:layout_constraintBottom_toBottomOf="@+id/signIn1"
-        app:layout_constraintStart_toEndOf="@+id/signIn1" />
+        <include
+            layout="@layout/fragment_register_attributes"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
