@@ -73,7 +73,6 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-
 }
 
 dependencies {
@@ -141,8 +140,8 @@ dependencies {
     androidTestImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    testImplementation "org.powermock:powermock-module-junit4:1.7.4"
-    testImplementation "org.powermock:powermock-api-mockito2:1.7.4"
+    testImplementation "org.powermock:powermock-module-junit4:2.0.0"
+    testImplementation "org.powermock:powermock-api-mockito2:2.0.0"
     androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
     androidTestImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
     kaptAndroidTest "com.google.dagger:hilt-android-compiler:$hilt_version"
