@@ -223,14 +223,16 @@ constructor(
     override suspend fun register(
         name: String,
         usernameOrEmail: String,
-        password: String
+        password: String,
+        countryId: Int,
+        cityId: Int
     ): Flow<DataState<Int?>> =
         flow {
             emit(DataState.Loading)
 
             val registerRequest = RegisterRequest(
-                0,
-                0,
+                cityId,
+                countryId,
                 name,
                 "SoftexDemo",
                 usernameOrEmail,
@@ -255,7 +257,6 @@ constructor(
                 }
             }
         }
-
 
     private fun getLocalIpAddress(): String {
         try {

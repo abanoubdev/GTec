@@ -39,4 +39,10 @@
     <string name="title_orders">Orders</string>
     <string name="invalid_name">Invalid Name</string>
     <string name="account_created_success">User Account Created</string>
+    <string name="country">Country</string>
+    <string name="city">City</string>
+    <string name="getting_started">Getting Started</string>
+    <string name="create_new_account_to_continue">Create an account to continued</string>
+    <string name="country_mandatory">Country*</string>
+    <string name="city_mandatory">City*</string>
 </resources>

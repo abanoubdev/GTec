@@ -16,7 +16,9 @@ interface RepositorySource {
     suspend fun register(
         name: String,
         usernameOrEmail: String,
-        password: String
+        password: String,
+        countryId: Int,
+        cityId: Int
     ): Flow<DataState<Int?>>
 
     suspend fun getCachedUser(): Flow<DataState<User?>>

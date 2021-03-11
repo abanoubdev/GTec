@@ -7,9 +7,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.softex.gtec.extensions.isEmpty
 import com.softex.gtec.extensions.isValidEmail
-import com.softex.gtec.model.User
+import com.softex.gtec.model.Country
 import com.softex.gtec.repository.RepositorySource
-import com.softex.gtec.ui.login.LoginStateEvent
 import com.softex.gtec.util.DataState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -29,6 +28,8 @@ constructor(
     var name: String = ""
     var usernameOrEmail: String = ""
     var password: String = ""
+    var countryId: Int = 0
+    var cityId: Int = 0
 
     private val _errorState: MutableLiveData<RegisterStateEvent> = MutableLiveData()
 
@@ -40,6 +41,11 @@ constructor(
     val dataState: LiveData<DataState<Int?>>
         get() = _dataState
 
+    private val _countriesDataState: MutableLiveData<DataState<List<Country>?>> = MutableLiveData()
+
+    val countriesDataState: LiveData<DataState<List<Country>?>>
+        get() = _countriesDataState
+
     fun setStateEvent(stateEvent: RegisterStateEvent) {
         viewModelScope.launch {
             when (stateEvent) {
@@ -49,7 +55,7 @@ constructor(
                         return@launch
                     }
 
-                    if (usernameOrEmail.isEmpty()) {
+                    if (!usernameOrEmail.isValidEmail()) {
                         _errorState.value = RegisterStateEvent.InvalidUsernameOrEmail
                         return@launch
                     }
@@ -59,11 +65,19 @@ constructor(
                         return@launch
                     }
 
-                    mainRepository.register(name, usernameOrEmail, password)
+                    mainRepository.register(name, usernameOrEmail, password, countryId, cityId)
                         .onEach { dataState ->
                             _dataState.value = dataState
                         }.launchIn(viewModelScope)
                 }
+
+                is RegisterStateEvent.GetCountriesWithCities -> {
+                    mainRepository.getCountriesWithCities()
+                        .onEach { dataState ->
+                            _countriesDataState.value = dataState
+                        }.launchIn(viewModelScope)
+                }
+
                 else -> {
                     throw Exception("State not found")
                 }

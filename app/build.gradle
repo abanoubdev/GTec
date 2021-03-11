@@ -132,6 +132,8 @@ dependencies {
     def recyclerview_expandable_version = "0.1"
     implementation "com.hendraanggrian.recyclerview:recyclerview-expandable:$recyclerview_expandable_version"
 
+    implementation "com.github.skydoves:powerspinner:1.1.7"
+
     //Testing
     def test_version = "1.3.0"
     androidTestImplementation "androidx.test:core-ktx:$test_version"

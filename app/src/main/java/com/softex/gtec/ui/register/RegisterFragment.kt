@@ -10,11 +10,11 @@ import androidx.navigation.Navigation
 import com.softex.gtec.R
 import com.softex.gtec.databinding.FragmentRegisterBinding
 import com.softex.gtec.extensions.snackbarShort
+import com.softex.gtec.model.Country
 import com.softex.gtec.ui.BaseFragment
 import com.softex.gtec.util.DataState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-
 
 @ExperimentalCoroutinesApi
 @AndroidEntryPoint
@@ -68,7 +68,6 @@ class RegisterFragment : BaseFragment(R.layout.fragment_register) {
     }
 
     override fun subscribeObservers() {
-
         viewModel.dataState.observe(viewLifecycleOwner, { dataState ->
             if (dataState != null) {
                 when (dataState) {
@@ -79,6 +78,25 @@ class RegisterFragment : BaseFragment(R.layout.fragment_register) {
                             requireActivity(),
                             R.id.nav_host_fragment
                         ).popBackStack()
+                    }
+
+                    is DataState.Error -> {
+                        displayLoading(false)
+                        displayError(dataState.exception.message)
+                    }
+
+                    is DataState.Loading -> {
+                        displayLoading(true)
+                    }
+                }
+            }
+        })
+
+        viewModel.countriesDataState.observe(viewLifecycleOwner, { dataState ->
+            if (dataState != null) {
+                when (dataState) {
+                    is DataState.Success<List<Country>?> -> {
+                        validateCountriesResponse(dataState)
                     }
 
                     is DataState.Error -> {
@@ -114,6 +132,39 @@ class RegisterFragment : BaseFragment(R.layout.fragment_register) {
                 }
             }
         })
+
+        viewModel.setStateEvent(RegisterStateEvent.GetCountriesWithCities)
+    }
+
+    private fun validateCountriesResponse(dataState: DataState.Success<List<Country>?>) {
+        displayLoading(false)
+        val countries = dataState.data
+        countries?.let {
+            val countriesLabels = mutableListOf<String>()
+            repeat(it.size) { index ->
+                countriesLabels.add(it[index].Name)
+            }
+            _binding?.spinnerCountry?.setItems(countriesLabels)
+            _binding?.spinnerCountry?.setOnSpinnerItemSelectedListener<String> { _, _, newIndex, text ->
+                viewModel.countryId = it[newIndex].ID
+                val cities = it[newIndex].cities
+                val citiesLabels = mutableListOf<String>()
+                cities.let {
+                    for (city in cities) {
+                        city?.let {
+                            citiesLabels.add(city.Name)
+                        }
+                    }
+                }
+                _binding?.spinnerCity?.setItems(citiesLabels)
+                _binding?.spinnerCity?.setOnSpinnerItemSelectedListener<String> { _, _, cityNewIndex, cityText ->
+                    viewModel.cityId = it[newIndex].cities[cityNewIndex]?.ID!!
+                }
+            }
+
+            viewModel.countryId = -1
+            viewModel.cityId = -1
+        }
     }
 
     private fun displayError(message: String?) {
@@ -126,6 +177,8 @@ class RegisterFragment : BaseFragment(R.layout.fragment_register) {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        _binding?.spinnerCountry?.dismiss()
+        _binding?.spinnerCity?.dismiss()
         _binding = null
     }
 }
