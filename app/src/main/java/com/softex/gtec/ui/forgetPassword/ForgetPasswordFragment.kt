@@ -61,7 +61,7 @@ class ForgetPasswordFragment : BaseFragment(R.layout.fragment_forget_password) {
                             if (it.MailSent)
                                 displaySuccess(getString(R.string.reset_password_message_success))
                             else
-                                displayError(getString(R.string.reset_password_message_failure))
+                                displayError(dataState.data.Message)
                         }
                     }
 
