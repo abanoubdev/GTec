@@ -3,9 +3,7 @@ package com.softex.gtec.repository
 import android.text.format.Formatter
 import com.softex.gtec.BuildConfig
 import com.softex.gtec.extensions.encrypt
-import com.softex.gtec.model.Country
-import com.softex.gtec.model.RegisterRequest
-import com.softex.gtec.model.User
+import com.softex.gtec.model.*
 import com.softex.gtec.model.featuredImages.BannerResponseItem
 import com.softex.gtec.model.menuItems.NavigationMenuResponseItem
 import com.softex.gtec.model.newArrivals.NewArrivalsResponseItem
@@ -245,7 +243,9 @@ constructor(
                 ""
             )
 
-            when (retrofitService.register(registerRequest)) {
+            val result = retrofitService.register(registerRequest)
+
+            when (result) {
                 2 -> {
                     emit(DataState.Error(Exception("Account Already Exists")))
                 }
@@ -256,6 +256,21 @@ constructor(
                     emit(DataState.Error(Exception("Error Creating Account")))
                 }
             }
+        }
+
+    override suspend fun forgetPassword(email: String) =
+        flow {
+            emit(DataState.Loading)
+            val forgetPasswordRequest = ForgetPasswordRequest(
+                "SoftexDemo", email, BuildConfig.encrypted_app_url.encrypt(),
+                "KiYqJCgjLWo5MDE2KCQzNCM0NSgqKQ==", "wpKr&\$NDagoDhFNFI\$(O", "104.243.33.149"
+            )
+
+            val result = retrofitService.forgetPassword(forgetPasswordRequest)
+            if (result != null)
+                emit(DataState.Success(result))
+            else
+                emit(DataState.Error(Exception("Error in sending email password")))
         }
 
     private fun getLocalIpAddress(): String {

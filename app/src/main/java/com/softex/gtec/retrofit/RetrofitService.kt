@@ -1,9 +1,6 @@
 package com.softex.gtec.retrofit
 
-import com.softex.gtec.model.City
-import com.softex.gtec.model.Country
-import com.softex.gtec.model.RegisterRequest
-import com.softex.gtec.model.User
+import com.softex.gtec.model.*
 import com.softex.gtec.model.featuredImages.BannerResponseItem
 import com.softex.gtec.model.menuItems.NavigationMenuResponseItem
 import com.softex.gtec.model.newArrivals.NewArrivalsResponseItem
@@ -26,10 +23,15 @@ interface RetrofitService {
         @Query("encryptedUserPassword") encryptedPassword: String
     ): User?
 
-    @POST("/api/Account/RegisterNewCustomer")
+    @POST("api/Account/RegisterNewCustomer")
     suspend fun register(
         @Body registerRequest: RegisterRequest
     ): Int?
+
+    @POST("api/Account/ForgotPassword")
+    suspend fun forgetPassword(
+        @Body forgetPasswordRequest: ForgetPasswordRequest
+    ): ForgetPasswordResponse?
 
     @GET("api/Main/GetCategoriesFeaturedImages")
     suspend fun getTopCategories(

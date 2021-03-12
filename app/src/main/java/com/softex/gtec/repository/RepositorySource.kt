@@ -1,6 +1,7 @@
 package com.softex.gtec.repository
 
 import com.softex.gtec.model.Country
+import com.softex.gtec.model.ForgetPasswordResponse
 import com.softex.gtec.model.User
 import com.softex.gtec.model.featuredImages.BannerResponseItem
 import com.softex.gtec.model.menuItems.NavigationMenuResponseItem
@@ -20,6 +21,8 @@ interface RepositorySource {
         countryId: Int,
         cityId: Int
     ): Flow<DataState<Int?>>
+
+    suspend fun forgetPassword(email: String): Flow<DataState<ForgetPasswordResponse?>>
 
     suspend fun getCachedUser(): Flow<DataState<User?>>
 

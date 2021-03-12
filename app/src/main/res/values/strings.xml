@@ -8,6 +8,7 @@
     <string name="dont_have_account">Don’t have an account?</string>
     <string name="sign_up">Sign Up</string>
     <string name="invalid_username_or_email">Invalid Username or Email</string>
+    <string name="invalid_email">Invalid Email please add valid one</string>
     <string name="invalid_password">Invalid Password</string>
     <string name="please">Please</string>
     <string name="wait">Wait</string>
@@ -45,4 +46,10 @@
     <string name="create_new_account_to_continue">Create an account to continued</string>
     <string name="country_mandatory">Country*</string>
     <string name="city_mandatory">City*</string>
+    <string name="forget_password">Forget password</string>
+    <string name="enter_your_email">Enter your e-mail</string>
+    <string name="send">Send</string>
+    <string name="empty_email">Email is Empty</string>
+    <string name="reset_password_message_success">Reset password is sent to your email successfully</string>
+    <string name="reset_password_message_failure">Can not send reset password to your email please try again later</string>
 </resources>

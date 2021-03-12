@@ -4,7 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../../../layout/custom_preview.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/back.xml" value="0.19947916666666668" />
+        <entry key="app/src/main/res/drawable/back_black.xml" value="0.19947916666666668" />
         <entry key="app/src/main/res/layout/electronics_row_item.xml" value="0.16084093211752787" />
+        <entry key="app/src/main/res/layout/fragment_forget_password.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.10461956521739131" />
         <entry key="app/src/main/res/layout/fragment_register.xml" value="0.16058763931104356" />
         <entry key="app/src/main/res/layout/fragment_register_attributes.xml" value="0.18229166666666666" />
         <entry key="app/src/main/res/layout/fragment_register_fields.xml" value="0.335" />
