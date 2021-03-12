@@ -17,13 +17,13 @@ interface RetrofitService {
 
     @GET("/api/Account/CustomerLogin")
     suspend fun customerLogin(
-        @Query("InputX.securityString") securityString: String,
-        @Query("InputX.serverIP") serverIP: String,
-        @Query("InputX.databaseName") databaseName: String,
-        @Query("InputX.encryptedEXAppID") encryptedEXAppID: String,
-        @Query("InputX.encryptedAppURL") encryptedAppURL: String,
-        @Query("InputX.email") email: String,
-        @Query("InputX.encryptedUserPassword") encryptedPassword: String
+        @Query("securityString") securityString: String,
+        @Query("serverIP") serverIP: String,
+        @Query("databaseName") databaseName: String,
+        @Query("encryptedEXAppID") encryptedEXAppID: String,
+        @Query("encryptedAppURL") encryptedAppURL: String,
+        @Query("email") email: String,
+        @Query("encryptedUserPassword") encryptedPassword: String
     ): User?
 
     @POST("/api/Account/RegisterNewCustomer")
@@ -33,53 +33,53 @@ interface RetrofitService {
 
     @GET("api/Main/GetCategoriesFeaturedImages")
     suspend fun getTopCategories(
-        @Query("InputX.securityString") securityString: String,
-        @Query("InputX.serverIP") serverIP: String,
-        @Query("InputX.databaseName") databaseName: String,
-        @Query("InputX.encryptedEXAppID") encryptedEXAppID: String,
-        @Query("InputX.encryptedTreeNodeID") encryptedTreeNodeID: String,
+        @Query("securityString") securityString: String,
+        @Query("serverIP") serverIP: String,
+        @Query("databaseName") databaseName: String,
+        @Query("encryptedEXAppID") encryptedEXAppID: String,
+        @Query("encryptedTreeNodeID") encryptedTreeNodeID: String,
     ): List<TopCategoriesResponseItem>?
 
     @GET("api/Main/GetNewArrivals")
     suspend fun getNewArrivals(
-        @Query("InputX.securityString") securityString: String,
-        @Query("InputX.serverIP") serverIP: String,
-        @Query("InputX.databaseName") databaseName: String,
-        @Query("InputX.encryptedEXAppID") encryptedEXAppID: String,
-        @Query("InputX.encryptedTreeNodeID") encryptedTreeNodeID: String,
+        @Query("securityString") securityString: String,
+        @Query("serverIP") serverIP: String,
+        @Query("databaseName") databaseName: String,
+        @Query("encryptedEXAppID") encryptedEXAppID: String,
+        @Query("encryptedTreeNodeID") encryptedTreeNodeID: String,
     ): List<NewArrivalsResponseItem>?
 
     @GET("api/Main/GetBannerImgInfo")
     suspend fun getBanners(
-        @Query("InputX.securityString") securityString: String,
-        @Query("InputX.serverIP") serverIP: String,
-        @Query("InputX.databaseName") databaseName: String,
-        @Query("InputX.encryptedEXAppID") encryptedEXAppID: String,
-        @Query("InputX.encryptedTreeNodeClassificationID") encryptedTreeNodeClassificationID: String,
+        @Query("securityString") securityString: String,
+        @Query("serverIP") serverIP: String,
+        @Query("databaseName") databaseName: String,
+        @Query("encryptedEXAppID") encryptedEXAppID: String,
+        @Query("encryptedTreeNodeClassificationID") encryptedTreeNodeClassificationID: String,
     ): List<BannerResponseItem>?
 
     @GET("api/Shop/GetCategoriesWithClassification")
     suspend fun getCategoriesWithClassification(
-        @Query("InputX.securityString") securityString: String,
-        @Query("InputX.serverIP") serverIP: String,
-        @Query("InputX.databaseName") databaseName: String,
-        @Query("InputX.encryptedEXAppID") encryptedEXAppID: String,
-        @Query("InputX.encryptedClassificationID") encryptedClassificationID: String,
+        @Query("securityString") securityString: String,
+        @Query("serverIP") serverIP: String,
+        @Query("databaseName") databaseName: String,
+        @Query("encryptedEXAppID") encryptedEXAppID: String,
+        @Query("encryptedClassificationID") encryptedClassificationID: String,
     ): List<NavigationMenuResponseItem>?
 
     @GET("api/General/GetCountries")
     suspend fun getCountries(
-        @Query("InputX.securityString") securityString: String,
-        @Query("InputX.serverIP") serverIP: String,
-        @Query("InputX.databaseName") databaseName: String,
-        @Query("InputX.encryptedEXAppID") encryptedEXAppID: String
+        @Query("securityString") securityString: String,
+        @Query("serverIP") serverIP: String,
+        @Query("databaseName") databaseName: String,
+        @Query("encryptedEXAppID") encryptedEXAppID: String
     ): List<Country>?
 
     @GET("api/General/GetCities")
     suspend fun getCities(
-        @Query("InputX.securityString") securityString: String,
-        @Query("InputX.serverIP") serverIP: String,
-        @Query("InputX.databaseName") databaseName: String,
-        @Query("InputX.encryptedEXAppID") encryptedEXAppID: String
+        @Query("securityString") securityString: String,
+        @Query("serverIP") serverIP: String,
+        @Query("databaseName") databaseName: String,
+        @Query("encryptedEXAppID") encryptedEXAppID: String
     ): List<City>?
 }

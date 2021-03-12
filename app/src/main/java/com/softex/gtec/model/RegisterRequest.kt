@@ -3,28 +3,28 @@ package com.softex.gtec.model
 import com.google.gson.annotations.SerializedName
 
 data class RegisterRequest(
-    @SerializedName("InputX.CityID")
+    @SerializedName("CityID")
     val CityID: Int,
-    @SerializedName("InputX.CountryID")
+    @SerializedName("CountryID")
     val CountryID: Int,
-    @SerializedName("InputX.CustomerFullName")
+    @SerializedName("CustomerFullName")
     val CustomerFullName: String,
-    @SerializedName("InputX.DatabaseName")
+    @SerializedName("DatabaseName")
     val DatabaseName: String,
-    @SerializedName("InputX.Email")
+    @SerializedName("Email")
     val Email: String,
-    @SerializedName("InputX.EncryptedAppURL")
+    @SerializedName("EncryptedAppURL")
     val EncryptedAppURL: String,
-    @SerializedName("InputX.EncryptedEXAppID")
+    @SerializedName("EncryptedEXAppID")
     val EncryptedEXAppID: String,
-    @SerializedName("InputX.EncryptedPassword")
+    @SerializedName("EncryptedPassword")
     val EncryptedPassword: String,
-    @SerializedName("InputX.IPAddress")
+    @SerializedName("IPAddress")
     val IPAddress: String,
-    @SerializedName("InputX.SecurityString")
+    @SerializedName("SecurityString")
     val SecurityString: String,
-    @SerializedName("InputX.ServerIP")
+    @SerializedName("ServerIP")
     val ServerIP: String,
-    @SerializedName("InputX.UserRegisterationDetails")
+    @SerializedName("UserRegisterationDetails")
     val UserRegisterationDetails: String
 )

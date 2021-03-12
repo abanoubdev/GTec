@@ -11,12 +11,12 @@ object ImageUrlDriller {
 
         return Uri.parse(BuildConfig.base_url + "api/General/GetImagesContentByID")
             .buildUpon()
-            .appendQueryParameter("InputX.securityString", BuildConfig.security_string)
-            .appendQueryParameter("InputX.serverIP", BuildConfig.server_ip)
-            .appendQueryParameter("InputX.databaseName", BuildConfig.database_name)
-            .appendQueryParameter("InputX.encryptedEXAppID", BuildConfig.encrypted_ex_app_id)
-            .appendQueryParameter("InputX.encryptedFileID", fileId.encrypt())
-            .appendQueryParameter("InputX.mediaMode", 1.toString())
+            .appendQueryParameter("securityString", BuildConfig.security_string)
+            .appendQueryParameter("serverIP", BuildConfig.server_ip)
+            .appendQueryParameter("databaseName", BuildConfig.database_name)
+            .appendQueryParameter("encryptedEXAppID", BuildConfig.encrypted_ex_app_id)
+            .appendQueryParameter("encryptedFileID", fileId.encrypt())
+            .appendQueryParameter("mediaMode", 1.toString())
             .build().toString()
     }
 }
